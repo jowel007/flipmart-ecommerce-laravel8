@@ -113,10 +113,19 @@ class SubCategoryController extends Controller
         return view('backend.category.sub_subcategory_view',compact('subsubcategory','categories'));
     }
 
+//get data in select category automatic select subcategory
      public function GetSubCategory($category_id){
 
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name_en','ASC')->get();
         return json_encode($subcat);
+     }
+
+
+//get data in select subcategory automatic select subsubcategory
+    public function GetSubSubCategory($subcategory_id){
+
+        $subsubcat = SubSubCategory::where('subcategory_id',$subcategory_id)->orderBy('subsubcategory_name_en','ASC')->get();
+        return json_encode($subsubcat);
      }
 
 
