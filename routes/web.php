@@ -7,7 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\ProductController;
-
+use App\Http\Controllers\Backend\SliderController;
 
 use App\Http\Controllers\Frontend\IndexController;
 
@@ -29,9 +29,12 @@ Route::group(['prefix'=> 'admin','middleware'=>['admin:admin']], function(){
     Route::post('/login',[AdminController::class, 'store'])->name('admin.login');
 });
 
+Route::middleware(['auth:admin'])->group(function(){
+
+
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth:admin');
 
 //admin all routes
 
@@ -42,7 +45,7 @@ Route::post('/admin/profile/store',[AdminProfileController::class, 'AdminProfile
 Route::get('/admin/change/password',[AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 Route::post('/update/change/password',[AdminProfileController::class, 'AdminUpdateChangePassword'])->name('update.change.password');
 
-
+}); //admin middleware  end
 
 //user all routes
 
@@ -143,6 +146,27 @@ Route::get('/active/{id}', [ProductController::class, 'ProductActive'])->name('p
 
 Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('product.delete');
 
+
+});
+
+
+// Admin Slider All Routes 
+
+Route::prefix('slider')->group(function(){
+
+Route::get('/view', [SliderController::class, 'SliderView'])->name('manage-slider');
+
+Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+
+Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+
+Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+
+Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+
+Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
+
+Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
 
 });
 
