@@ -178,4 +178,7 @@ Route::get('/language/hindi', [LanguageController::class, 'Hindi'])->name('hindi
 
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 
+/// product details url All Routes ////
+Route::get('/product/details/{id}/{slug}', [IndexController::class,'ProductDetails']);
+
 

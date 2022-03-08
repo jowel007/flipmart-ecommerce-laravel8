@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Category;
 use App\Models\Slider;
 use App\Models\Product;
+use App\Models\MultiImg;
 
 class IndexController extends Controller
 {
@@ -85,4 +86,13 @@ class IndexController extends Controller
         }
 
     }   // end method
+
+
+    // product details
+    public function ProductDetails($id,$slug)
+    {
+        $product = Product::findOrFail($id);
+        $multiimg = MultiImg::where('product_id',$id)->get();
+        return view('frontend.product.product_details',compact('product','multiimg'));
+    }
 }

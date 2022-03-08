@@ -15,7 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('brand_id');
+             $table->integer('brand_id');
             $table->integer('category_id');
             $table->integer('subcategory_id');
             $table->integer('subsubcategory_id');
@@ -27,12 +27,12 @@ class CreateProductsTable extends Migration
             $table->string('product_qty');
             $table->string('product_tags_en');
             $table->string('product_tags_hin');
-            $table->string('product_size_en');
-            $table->string('product_size_hin');
+            $table->string('product_size_en')->nullable();
+            $table->string('product_size_hin')->nullable();
             $table->string('product_color_en');
             $table->string('product_color_hin');
             $table->string('selling_price');
-            $table->string('discount_price');
+            $table->string('discount_price')->nullable();
             $table->string('short_descp_en');
             $table->string('short_descp_hin');
             $table->string('long_descp_en');
@@ -42,7 +42,7 @@ class CreateProductsTable extends Migration
             $table->integer('featured')->nullable();
             $table->integer('special_offer')->nullable();
             $table->integer('special_deals')->nullable();
-             $table->integer('status')->default(0);
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
