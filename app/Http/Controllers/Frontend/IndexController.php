@@ -11,7 +11,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Slider;
 use App\Models\Product;
-use App\Models\MultiImg;
+use App\Models\MultiImg;  
 
 class IndexController extends Controller
 {
@@ -113,4 +113,15 @@ class IndexController extends Controller
         $multiimg = MultiImg::where('product_id',$id)->get();
         return view('frontend.product.product_details',compact('product','multiimg'));
     }
+
+    //  Tags wise Product
+
+    public function TagWiseProduct($tag)
+    {
+        $products = Product::where('status',1)->where('product_tags_en',$tag)->where('product_tags_hin',$tag)->orderBy('id','DESC')->paginate(3);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+        return view('frontend.tags.tags_view',compact('products','categories'));
+    }
+
+
 }

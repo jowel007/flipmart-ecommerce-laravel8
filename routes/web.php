@@ -181,4 +181,7 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 /// product details url All Routes ////
 Route::get('/product/details/{id}/{slug}', [IndexController::class,'ProductDetails']);
 
+// Frontend Product Tags Page 
+Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']); 
+
 
