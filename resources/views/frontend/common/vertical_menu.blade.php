@@ -9,7 +9,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
           <nav class="yamm megamenu-horizontal">
             <ul class="nav">
 
-              @foreach($categories as $category)
+              @foreach($categories as $category) 
               <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon {{ $category->category_icon }}" aria-hidden="true"></i>
                 @if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif
               </a>
@@ -23,9 +23,12 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
 
                       @foreach($subcategories as $subcategory)
                       <div class="col-sm-12 col-md-3">
-                         <h2 class="title">
-@if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif
-  </h2>
+
+<a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
+      <h2 class="title">
+    @if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif
+      </h2>
+</a>
 
                   <!--   // Get SubSubCategory Table Data -->
                 @php
@@ -33,7 +36,7 @@ $categories = App\Models\Category::orderBy('category_name_en','ASC')->get();
                 @endphp  
                       @foreach($subsubcategories as $subsubcategory)    
                         <ul class="links list-unstyled">
-                          <li><a href="#">
+                          <li><a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en ) }}">
                              @if(session()->get('language') == 'hindi') {{ $subsubcategory->subsubcategory_name_hin }} @else {{ $subsubcategory->subsubcategory_name_en }} @endif
                           </a></li>
                         </ul>
