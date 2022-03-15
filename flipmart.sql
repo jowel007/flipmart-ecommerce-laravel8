@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2022 at 07:31 PM
+-- Generation Time: Mar 15, 2022 at 02:56 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -150,7 +150,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2022_02_04_052035_create_products_table', 7),
 (13, '2022_02_04_052817_create_multi_imgs_table', 7),
 (14, '2022_02_05_014328_create_sliders_table', 8),
-(15, '2022_03_08_033610_create_products_table', 9);
+(15, '2022_03_08_033610_create_products_table', 9),
+(16, '2022_03_15_122917_create_wishlists_table', 10);
 
 -- --------------------------------------------------------
 
@@ -315,10 +316,10 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `subs
 (5, 1, 7, 9, 9, 'Amazon Essentials Men\'s Classic-fit Wrinkle-Resistant Flat-Front Chino Pant', 'अमेज़ॅन एसेंशियल मेन्स क्लासिक-फिट रिंकल-रेसिस्टेंट फ्लैट-फ्रंट चिनो पैंट', 'amazon-essentials-men\'s-classic-fit-wrinkle-resistant-flat-front-chino-pant', 'अमेज़ॅन-एसेंशियल-मेन्स-क्लासिक-फिट-रिंकल-रेसिस्टेंट-फ्लैट-फ्रंट-चिनो-पैंट', '7712314', '10', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '400', '380', 'Generous classic-fit that sits at waist, roomy through seat and thigh, with a straight leg; zip fly with button closure, side pockets, and button pockets at the back', 'उदार क्लासिक-फिट जो कमर पर बैठता है, सीधे पैर के साथ सीट और जांघ के माध्यम से विशाल; जिप फ्लाई बटन क्लोजर, साइड पॉकेट्स और बैक पर बटन पॉकेट्स के साथ', '<p>Generous classic-fit that sits at waist, roomy through seat and thigh, with a straight leg; zip fly with button closure, side pockets, and button pockets at the back</p>', '<p>&nbsp;</p>\r\n\r\n<p>उदार क्लासिक-फिट जो कमर पर बैठता है, सीधे पैर के साथ सीट और जांघ के माध्यम से विशाल; जिप फ्लाई बटन क्लोजर, साइड पॉकेट्स और बैक पर बटन पॉकेट्स के साथ</p>', 'upload/products/thambnail/1726702854124251.jpg', 1, NULL, 1, 1, 1, '2022-03-08 06:09:38', '2022-03-08 06:09:38'),
 (6, 3, 7, 9, 10, 'OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant', 'आउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत', 'outson-mens-fashion-joggers-sports-pants-casual-cotton-cargo-pants-gym-sweatpants-trousers-mens-long-pant', 'आउटसन-मेन्स-फैशन-जॉगर्स-स्पोर्ट्स-पैंट्स-कैजुअल-कॉटन-कार्गो-पैंट्स-जिम-स्वेटपैंट्स-ट्राउजर-मेन्स-लॉन्ग-पंत', 'HV-MS814', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '520', '450', 'OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant', 'आउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत', '<p>OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long PantOUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant</p>', '<pre>\r\nआउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंतआउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत</pre>', 'upload/products/thambnail/1726702991251392.jpg', NULL, 1, 1, 1, 1, '2022-03-08 23:43:17', '2022-03-08 23:43:17'),
 (7, 2, 8, 14, 56, 'LG mobile display', 'महिलाओं के लिए कॉम्फिट कैटिन सैंडल', 'lg-mobile-display', 'महिलाओं-के-लिए-कॉम्फिट-कैटिन-सैंडल', 'w55', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '40', NULL, 'Care Instructions: Clean your shoes with the leather cleaner or leather shampoo, and use a good quality brush to remove loose surface dirt.', 'देखभाल के निर्देश: अपने जूतों को लेदर क्लीनर या लेदर शैम्पू से साफ करें, और ढीली सतह की गंदगी को हटाने के लिए एक अच्छी गुणवत्ता वाले ब्रश का उपयोग करें।', '<p><strong>Care Instructions: Clean your shoes with the leather cleaner or leather shampoo, and use a good quality brush to remove loose surface dirt.</strong></p>', '<p>&nbsp;</p>\r\n\r\n<p>देखभाल के निर्देश: अपने जूतों को लेदर क्लीनर या लेदर शैम्पू से साफ करें, और ढीली सतह की गंदगी को हटाने के लिए एक अच्छी गुणवत्ता वाले ब्रश का उपयोग करें।</p>', 'upload/products/thambnail/1726703165626313.jpg', 1, NULL, 1, 1, 1, '2022-03-07 22:07:41', NULL),
-(8, 5, 8, 16, 40, 'SAMSUNG 32” M7 Smart Monitor & Streaming TV, 4K UHD, Adaptive Picture, Ultrawide Gaming View, Watch Netflix, HBO, Prime Video, Apple Airplay, Alexa,Built In Speakers, Remote,USB-C,LS32AM702UNXZA,Black', 'पुरुषों के लिए हश पिल्ले ओवल स्लिप-ऑन शू', 'samsung-32”-m7-smart-monitor-&-streaming-tv,-4k-uhd,-adaptive-picture,-ultrawide-gaming-view,-watch-netflix,-hbo,-prime-video,-apple-airplay,-alexa,built-in-speakers,-remote,usb-c,ls32am702unxza,black', 'पुरुषों-के-लिए-हश-पिल्ले-ओवल-स्लिप-ऑन-शू', 'LS32AM702UNXZA', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '2200', NULL, 'Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone', 'मोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें', '<p>Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone</p>', '<pre>\r\nमोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें</pre>', 'upload/products/thambnail/1726711325964391.jpg', NULL, 1, 1, 1, 1, '2022-03-08 00:17:23', NULL),
-(9, 4, 8, 15, 46, 'Logitech MK270 Wireless Keyboard and Mouse Combo for Windows, 2.4 GHz Wireless, Compact Mouse, 8 Multimedia and Shortcut Keys, 2-Year Battery Life, for PC, Laptop', 'विंडोज के लिए लॉजिटेक एमके270 वायरलेस कीबोर्ड और माउस कॉम्बो, 2.4 गीगाहर्ट्ज वायरलेस, कॉम्पैक्ट माउस, 8 मल्टीमीडिया और शॉर्टकट की, पीसी, लैपटॉप के लिए 2 साल की बैटरी लाइफ', 'logitech-mk270-wireless-keyboard-and-mouse-combo-for-windows,-2.4-ghz-wireless,-compact-mouse,-8-multimedia-and-shortcut-keys,-2-year-battery-life,-for-pc,-laptop', 'विंडोज-के-लिए-लॉजिटेक-एमके270-वायरलेस-कीबोर्ड-और-माउस-कॉम्बो,-2.4-गीगाहर्ट्ज-वायरलेस,-कॉम्पैक्ट-माउस,-8-मल्टीमीडिया-और-शॉर्टकट-की,-पीसी,-लैपटॉप-के-लिए-2-साल-की-बैटरी-लाइफ', 'MK270', '2', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1600', NULL, 'Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer', 'विश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।', '<p>Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer</p>', '<pre>\r\nविश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।</pre>', 'upload/products/thambnail/1726711476459264.jpg', 1, 1, 1, NULL, 1, '2022-03-08 00:19:47', NULL),
-(10, 3, 9, 19, 93, 'Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट', 'living-and-more-4-foot-height-adjustable-fold-in-half-table-with-carrying-handle,-easy-folding-and-storage,-indoor-outdoor-use,-white', 'लिविंग-एंड-मोर-4-फुट-हाइट-एडजस्टेबल-फोल्ड-इन-हाफ-टेबल-कैरीइंग-हैंडल-के-साथ,-आसान-फोल्डिंग-और-स्टोरेज,-इंडोर-आउटडोर-यूज,-व्हाइट', '7712314', '5', 'Living ,Height', 'लिविंग ,हाइट', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1800', '1650', 'Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट', '<p>Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White</p>', '<p>&nbsp;</p>\r\n\r\n<p>लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट</p>', 'upload/products/thambnail/1726711610107439.jpg', 1, 1, NULL, 1, 1, '2022-03-10 11:09:33', '2022-03-10 11:09:33'),
-(11, 2, 10, 21, 77, 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) & Spinner(8lbs)', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)', 'vivohome-electric-portable-2-in-1-twin-tub-mini-laundry-washer-and-spin-dryer-combo-washing-machine-with-built-in-drain-pump-and-drain-hose-and-for-apartments-26lbs-blue-washer(18lbs)-&-spinner(8lbs)', 'VIVOHOME-इलेक्ट्रिक-पोर्टेबल-2-इन-1-ट्विन-टब-मिनी-लॉन्ड्री-वॉशर-और-स्पिन-ड्रायर-कॉम्बो-वॉशिंग-मशीन-के-साथ-बिल्ट-इन-ड्रेन-पंप-और-ड्रेन-होज़-और-अपार्टमेंट्स-के-लिए-26lbs-ब्लू-वॉशर-(18lbs)-और-स्पिनर-(8lbs)', 'LxWxH', '8', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '3200', '3000', 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) & Spinner(8lbs)', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)', '<p>VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) &amp; Spinner(8lbs)</p>', '<pre>\r\nVIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)</pre>', 'upload/products/thambnail/1726711758304040.jpg', NULL, 1, NULL, 1, 1, '2022-03-08 06:08:55', '2022-03-08 06:08:55');
+(8, 5, 8, 16, 40, 'SAMSUNG 32” M7 Smart Monitor', 'पुरुषों के लिए हश पिल्ले ओवल स्लिप-ऑन शू', 'samsung-32”-m7-smart-monitor', 'पुरुषों-के-लिए-हश-पिल्ले-ओवल-स्लिप-ऑन-शू', 'LS32AM702UNXZA', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '2200', NULL, 'Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone', 'मोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें', '<p>Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone</p>', '<pre>\r\nमोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें</pre>', 'upload/products/thambnail/1726711325964391.jpg', NULL, 1, 1, 1, 1, '2022-03-14 23:21:59', '2022-03-14 23:21:59'),
+(9, 4, 8, 15, 46, 'Logitech MK270 Wireless Keyboard', 'विंडोज के लिए लॉजिटेक एमके270 वायरलेस कीबोर्ड', 'logitech-mk270-wireless-keyboard', 'विंडोज-के-लिए-लॉजिटेक-एमके270-वायरलेस-कीबोर्ड', 'MK270', '2', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', NULL, NULL, 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1600', NULL, 'Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer', 'विश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।', '<p>Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer</p>', '<pre>\r\nविश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।</pre>', 'upload/products/thambnail/1726711476459264.jpg', 1, 1, 1, NULL, 1, '2022-03-14 23:20:17', '2022-03-14 23:20:17'),
+(10, 3, 9, 19, 93, 'Living and More 4 Foot Height Adjustable Fold-in-Half Table', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ', 'living-and-more-4-foot-height-adjustable-fold-in-half-table', 'लिविंग-एंड-मोर-4-फुट-हाइट-एडजस्टेबल-फोल्ड-इन-हाफ', '7712314', '5', 'Living ,Height', 'लिविंग ,हाइट', NULL, NULL, 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1800', '1650', 'Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट', '<p>Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White</p>', '<p>&nbsp;</p>\r\n\r\n<p>लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट</p>', 'upload/products/thambnail/1726711610107439.jpg', 1, 1, NULL, 1, 1, '2022-03-14 23:58:14', '2022-03-14 23:58:14'),
+(11, 2, 10, 21, 77, 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर', 'vivohome-electric-portable-2-in-1-twin-tub-mini-laundry-washer-and-spin-dryer-combo-washing-machine', 'VIVOHOME-इलेक्ट्रिक-पोर्टेबल-2-इन-1-ट्विन-टब-मिनी-लॉन्ड्री-वॉशर', 'LxWxH', '8', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '3200', '3000', 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) & Spinner(8lbs)', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)', '<p>VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) &amp; Spinner(8lbs)</p>', '<pre>\r\nVIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)</pre>', 'upload/products/thambnail/1726711758304040.jpg', NULL, 1, NULL, 1, 1, '2022-03-14 23:21:38', '2022-03-14 23:21:38');
 
 -- --------------------------------------------------------
 
@@ -340,7 +341,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('VQqnuPHwSaSwgb9HErngACCLclqbz7EdE61KtWJi', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiOUxzT3JSYXZzSmhIQmRXdUpCRmVqZ0Ewc2llNVpsSHFtQ1dDVHU5biI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1647282653);
+('H4MmFlG5mgnVdBoY0ptuho5cOimKIPM4iBkQ2LTz', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo3OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3dpc2hsaXN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IjZNSGVhNGhadWtNSnhKQkd3c0d0MVNnTktTZmZoWlhsODlTbmJGaHciO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc1V2ZTltcHRUSXRRZ0xXLnBPeGZaLlZtLnNscnNkdi5pQmgvNHBSaVA4Uk8xbVUyUnZIZU8iO30=', 1647352518);
 
 -- --------------------------------------------------------
 
@@ -549,8 +550,32 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'user', 'jowel@user.com', NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
-(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'F9szFVaAA3omB4ZgfvRyT9Ah9eqPjsGSP3kUa108XtbV4Qx3dNo6h70aAN0u', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
+(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'EgVVtvcdcugnCHYHeQT1q6l7h0RZch3hWvXD9ce2yhoKvcZul7qmV8S6zcJw', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
 (3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(5, 2, 11, '2022-03-15 07:10:19', NULL),
+(6, 2, 8, '2022-03-15 07:10:21', NULL),
+(7, 2, 4, '2022-03-15 07:54:58', NULL),
+(8, 2, 6, '2022-03-15 07:55:14', NULL);
 
 --
 -- Indexes for dumped tables
@@ -648,6 +673,12 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -679,7 +710,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -722,6 +753,12 @@ ALTER TABLE `sub_sub_categories`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
