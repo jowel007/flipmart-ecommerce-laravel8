@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2022 at 02:56 PM
+-- Generation Time: Mar 16, 2022 at 06:41 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -106,6 +106,31 @@ INSERT INTO `categories` (`id`, `category_name_en`, `category_name_hin`, `catego
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coupons`
+--
+
+CREATE TABLE `coupons` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `coupon_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `coupon_discount` int(11) NOT NULL,
+  `coupon_validity` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `coupons`
+--
+
+INSERT INTO `coupons` (`id`, `coupon_name`, `coupon_discount`, `coupon_validity`, `status`, `created_at`, `updated_at`) VALUES
+(1, '14ABF222', 8, '2022-03-31', 1, '2022-03-15 21:15:42', NULL),
+(2, '21ABFEAS', 10, '2022-03-29', 1, '2022-03-15 21:33:19', '2022-03-15 21:33:19'),
+(3, 'YEAR22', 15, '2022-04-20', 1, '2022-03-15 21:31:03', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `failed_jobs`
 --
 
@@ -151,7 +176,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (13, '2022_02_04_052817_create_multi_imgs_table', 7),
 (14, '2022_02_05_014328_create_sliders_table', 8),
 (15, '2022_03_08_033610_create_products_table', 9),
-(16, '2022_03_15_122917_create_wishlists_table', 10);
+(16, '2022_03_15_122917_create_wishlists_table', 10),
+(17, '2022_03_16_025605_create_coupons_table', 11),
+(18, '2022_03_16_042244_create_ship_divisions_table', 12),
+(19, '2022_03_16_045842_create_ship_districts_table', 13),
+(20, '2022_03_16_052213_create_ship_states_table', 14);
 
 -- --------------------------------------------------------
 
@@ -341,7 +370,81 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('H4MmFlG5mgnVdBoY0ptuho5cOimKIPM4iBkQ2LTz', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo3OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3dpc2hsaXN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IjZNSGVhNGhadWtNSnhKQkd3c0d0MVNnTktTZmZoWlhsODlTbmJGaHciO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc1V2ZTltcHRUSXRRZ0xXLnBPeGZaLlZtLnNscnNkdi5pQmgvNHBSaVA4Uk8xbVUyUnZIZU8iO30=', 1647352518);
+('8LuIpTXeDb6l4mktEpXeqoTK2zBZRGZf3aBz2cvN', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiZGpoNklMdXFUVU1qMFZlcWlUYndlVkVObjN3VFdZRUc1RXNGN3lTbCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zaGlwcGluZy9zdGF0ZS92aWV3Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc1V2ZTltcHRUSXRRZ0xXLnBPeGZaLlZtLnNscnNkdi5pQmgvNHBSaVA4Uk8xbVUyUnZIZU8iO3M6NDoiY2FydCI7YToxOntzOjc6ImRlZmF1bHQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoyOntzOjg6IgAqAGl0ZW1zIjthOjU6e3M6MzI6IjYzYWY5YzMxN2IzNzhjM2VlYjBmOTA4ZDc5ZjI2ZDE3IjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6MTE6e3M6NToicm93SWQiO3M6MzI6IjYzYWY5YzMxN2IzNzhjM2VlYjBmOTA4ZDc5ZjI2ZDE3IjtzOjI6ImlkIjtzOjI6IjExIjtzOjM6InF0eSI7aToyO3M6NDoibmFtZSI7czo5OToiVklWT0hPTUUgRWxlY3RyaWMgUG9ydGFibGUgMiBpbiAxIFR3aW4gVHViIE1pbmkgTGF1bmRyeSBXYXNoZXIgYW5kIFNwaW4gRHJ5ZXIgQ29tYm8gV2FzaGluZyBNYWNoaW5lIjtzOjU6InByaWNlIjtkOjMwMDA7czo2OiJ3ZWlnaHQiO2Q6MTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTozOntzOjU6ImltYWdlIjtzOjQ2OiJ1cGxvYWQvcHJvZHVjdHMvdGhhbWJuYWlsLzE3MjY3MTE3NTgzMDQwNDAuanBnIjtzOjQ6InNpemUiO3M6NToiU21hbGwiO3M6NToiY29sb3IiO3M6MzoiUmVkIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6MDtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO31zOjMyOiIxNzA4Yjk1YzhlNDFiNTkzZTY4YzcxNjFjZDlhZDU5MiI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjExOntzOjU6InJvd0lkIjtzOjMyOiIxNzA4Yjk1YzhlNDFiNTkzZTY4YzcxNjFjZDlhZDU5MiI7czoyOiJpZCI7czoxOiI2IjtzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czoxMDU6Ik9VVFNPTiBNZW5zIEZhc2hpb24gSm9nZ2VycyBTcG9ydHMgUGFudHMgQ2FzdWFsIENvdHRvbiBDYXJnbyBQYW50cyBHeW0gU3dlYXRwYW50cyBUcm91c2VycyBNZW5zIExvbmcgUGFudCI7czo1OiJwcmljZSI7ZDo0NTA7czo2OiJ3ZWlnaHQiO2Q6MTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTozOntzOjU6ImltYWdlIjtzOjQ2OiJ1cGxvYWQvcHJvZHVjdHMvdGhhbWJuYWlsLzE3MjY3MDI5OTEyNTEzOTIuanBnIjtzOjQ6InNpemUiO3M6NjoiTWVkaXVtIjtzOjU6ImNvbG9yIjtzOjM6IlJlZCI7fXM6Mjg6IgAqAGVzY2FwZVdoZW5DYXN0aW5nVG9TdHJpbmciO2I6MDt9czo3OiJ0YXhSYXRlIjtpOjA7czo0OToiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGFzc29jaWF0ZWRNb2RlbCI7TjtzOjQ2OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AZGlzY291bnRSYXRlIjtpOjA7czo4OiJpbnN0YW5jZSI7czo3OiJkZWZhdWx0Ijt9czozMjoiN2IxYmFhOWQ0M2U0NTYwNzViN2JjZWM4MThiODRhNDYiO086MzI6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtIjoxMTp7czo1OiJyb3dJZCI7czozMjoiN2IxYmFhOWQ0M2U0NTYwNzViN2JjZWM4MThiODRhNDYiO3M6MjoiaWQiO3M6MToiOCI7czozOiJxdHkiO3M6MToiMSI7czo0OiJuYW1lIjtzOjMwOiJTQU1TVU5HIDMy4oCdIE03IFNtYXJ0IE1vbml0b3IiO3M6NToicHJpY2UiO2Q6MjIwMDtzOjY6IndlaWdodCI7ZDoxO3M6Nzoib3B0aW9ucyI7TzozOToiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW1PcHRpb25zIjoyOntzOjg6IgAqAGl0ZW1zIjthOjM6e3M6NToiaW1hZ2UiO3M6NDY6InVwbG9hZC9wcm9kdWN0cy90aGFtYm5haWwvMTcyNjcxMTMyNTk2NDM5MS5qcGciO3M6NDoic2l6ZSI7czo2OiJNZWRpdW0iO3M6NToiY29sb3IiO3M6MzoiUmVkIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6MDtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO31zOjMyOiI5N2ZlMjU0NDljNjFiZDBmNGMwMTMxYjhmNWU4MzlhOSI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjExOntzOjU6InJvd0lkIjtzOjMyOiI5N2ZlMjU0NDljNjFiZDBmNGMwMTMxYjhmNWU4MzlhOSI7czoyOiJpZCI7czoxOiI0IjtzOjM6InF0eSI7aToxO3M6NDoibmFtZSI7czo3ODoiTE9OR0JJREEgTWVucyBTbGltIEZpdCBCaWtlciBKZWFucyBTdHJldGNoZWQgRGlzdHJlc3NlZCBNb3RvIENvbWZ5IERlbmltIFBhbnRzIjtzOjU6InByaWNlIjtkOjMwMDtzOjY6IndlaWdodCI7ZDoxO3M6Nzoib3B0aW9ucyI7TzozOToiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW1PcHRpb25zIjoyOntzOjg6IgAqAGl0ZW1zIjthOjM6e3M6NToiaW1hZ2UiO3M6NDY6InVwbG9hZC9wcm9kdWN0cy90aGFtYm5haWwvMTcyNjcwMjY3NTc2NDE4NS5qcGciO3M6NDoic2l6ZSI7czo1OiJMYXJnZSI7czo1OiJjb2xvciI7czozOiJSZWQiO31zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fXM6NzoidGF4UmF0ZSI7aTowO3M6NDk6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBhc3NvY2lhdGVkTW9kZWwiO047czo0NjoiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGRpc2NvdW50UmF0ZSI7aTowO3M6ODoiaW5zdGFuY2UiO3M6NzoiZGVmYXVsdCI7fXM6MzI6ImE3MDIxZWUwZTBhYjVkZGYyZjNkMGUzNjJjMDgzNmJkIjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6MTE6e3M6NToicm93SWQiO3M6MzI6ImE3MDIxZWUwZTBhYjVkZGYyZjNkMGUzNjJjMDgzNmJkIjtzOjI6ImlkIjtzOjI6IjEwIjtzOjM6InF0eSI7czoxOiIxIjtzOjQ6Im5hbWUiO3M6NTk6IkxpdmluZyBhbmQgTW9yZSA0IEZvb3QgSGVpZ2h0IEFkanVzdGFibGUgRm9sZC1pbi1IYWxmIFRhYmxlIjtzOjU6InByaWNlIjtkOjE2NTA7czo2OiJ3ZWlnaHQiO2Q6MTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTozOntzOjU6ImltYWdlIjtzOjQ2OiJ1cGxvYWQvcHJvZHVjdHMvdGhhbWJuYWlsLzE3MjY3MTE2MTAxMDc0MzkuanBnIjtzOjQ6InNpemUiO047czo1OiJjb2xvciI7czozOiJSZWQiO31zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fXM6NzoidGF4UmF0ZSI7aTowO3M6NDk6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBhc3NvY2lhdGVkTW9kZWwiO047czo0NjoiAEdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtAGRpc2NvdW50UmF0ZSI7aTowO3M6ODoiaW5zdGFuY2UiO3M6NzoiZGVmYXVsdCI7fX1zOjI4OiIAKgBlc2NhcGVXaGVuQ2FzdGluZ1RvU3RyaW5nIjtiOjA7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjM1OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvdXNlci93aXNobGlzdCI7fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1647409251);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_districts`
+--
+
+CREATE TABLE `ship_districts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_districts`
+--
+
+INSERT INTO `ship_districts` (`id`, `division_id`, `district_name`, `created_at`, `updated_at`) VALUES
+(1, 2, 'feni', '2022-03-15 23:18:44', '2022-03-15 23:18:44'),
+(2, 1, 'Gazipur', '2022-03-15 23:08:58', NULL),
+(3, 4, 'srimongol', '2022-03-15 23:09:21', NULL),
+(5, 2, 'chadpur', '2022-03-15 23:31:25', NULL),
+(6, 1, 'Jamalpur', '2022-03-15 23:31:30', NULL),
+(7, 1, 'gopalganj', '2022-03-15 23:31:35', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_divisions`
+--
+
+CREATE TABLE `ship_divisions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_divisions`
+--
+
+INSERT INTO `ship_divisions` (`id`, `division_name`, `created_at`, `updated_at`) VALUES
+(1, 'Dhaka', '2022-03-15 22:40:58', NULL),
+(2, 'Cumilla', '2022-03-15 22:47:00', '2022-03-15 22:47:00'),
+(4, 'Sylhet', '2022-03-15 22:47:36', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ship_states`
+--
+
+CREATE TABLE `ship_states` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `ship_states`
+--
+
+INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 6, 'Jamalpur Sadar Upazila', '2022-03-15 23:32:17', NULL),
+(2, 1, 7, 'Baksiganj Upazila', '2022-03-15 23:32:30', NULL),
+(3, 2, 5, 'shaharasti', '2022-03-15 23:32:49', NULL),
+(4, 2, 5, 'hajigang', '2022-03-15 23:32:59', NULL),
+(5, 4, 3, 'chatok', '2022-03-15 23:39:33', '2022-03-15 23:39:33');
 
 -- --------------------------------------------------------
 
@@ -550,7 +653,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'user', 'jowel@user.com', NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
-(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'EgVVtvcdcugnCHYHeQT1q6l7h0RZch3hWvXD9ce2yhoKvcZul7qmV8S6zcJw', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
+(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, '2TT4BvcbG3lsrBwJUSe2CCQKI7AjKSnwlDAjI0GUZ6VtFyPgh0Y2Fny0UMJh', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
 (3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16');
 
 -- --------------------------------------------------------
@@ -601,6 +704,12 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `coupons`
+--
+ALTER TABLE `coupons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -646,6 +755,24 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sliders`
@@ -701,6 +828,12 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `coupons`
+--
+ALTER TABLE `coupons`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -710,7 +843,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -729,6 +862,24 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `ship_districts`
+--
+ALTER TABLE `ship_districts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `ship_divisions`
+--
+ALTER TABLE `ship_divisions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `ship_states`
+--
+ALTER TABLE `ship_states`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sliders`
