@@ -11,11 +11,15 @@ use Carbon\Carbon;
 
 class WishlistController extends Controller
 {
+
+
     public function ViewWishlist()
     {
         return view('frontend.wishlist.view_wishlist');
 
     } //end method
+
+
 
     public function GetWishlistProduct()
     {
@@ -24,6 +28,7 @@ class WishlistController extends Controller
         return response()->json($wishlist);
 
     } //end method
+
 
 
 

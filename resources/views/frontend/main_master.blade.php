@@ -564,13 +564,207 @@ function addToCart()
 
 
 
-
-
-    
-
 </script>
 
 
 {{--  end load wishlist data --}}
+
+
+
+
+
+
+
+
+{{-- load mycart data --}}
+
+<script type="text/javascript">
+    
+    function cart(){
+
+        $.ajax({
+
+            type: 'GET',
+           url: '/user/get-cart-product',
+             dataType:'json',
+             success:function(response){
+
+            var rows = ""
+              //  console.log(response)
+
+              $.each(response.carts,function(key,value){
+
+                 rows += `<tr>
+                    <td class="col-md-2"><img src="/${value.options.image}" alt="imga"  style="width:60px; height:60px;"></td>
+
+                    <td class="col-md-2">
+                        <div class="product-name"><a href="#">${value.name}</a></div>
+
+                        <div class="rating">
+                            <i class="fa fa-star rate"></i>
+                            <i class="fa fa-star rate"></i>
+                            <i class="fa fa-star rate"></i>
+                            <i class="fa fa-star rate"></i>
+                            <i class="fa fa-star non-rate"></i>
+                            <span class="review">( 06 Reviews )</span>
+                        </div>
+
+                        <div class="price">
+                            ${value.price}
+                        </div>
+
+                    </td>
+
+                <td class="col-md-2">
+                        <strong>${value.options.color} </strong> 
+                </td>
+
+            <td class="col-md-2">
+                  ${value.options.size == null
+                    ? `<span> .... </span>`
+                    :
+                  `<strong>${value.options.size} </strong>` 
+                  }           
+            </td>
+
+           <td class="col-md-2">
+
+            ${value.qty > 1
+
+            ? 
+
+            `<button type="submit" class="btn btn-danger btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)" >-</button> `
+
+            : 
+
+            `<button type="submit" class="btn btn-danger btn-sm" disabled >-</button> `
+            
+            } 
+                  
+                <input type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:25px;" > 
+
+                 <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartIncrement(this.id)">+</button>  
+            </td>
+
+
+            <td class="col-md-2">
+                <strong>$${value.subtotal} </strong> 
+            </td>
+
+                    
+
+                    <td class="col-md-1 close-btn">
+                        <button type="submit" class="" id="${value.rowId}" onclick="cartRemove(this.id)"><i class="fa fa-times"></i></button>
+                    </td>
+
+                </tr>`
+
+              });
+
+              $('#cartPage').html(rows);
+
+            }
+
+
+        })
+
+    }
+
+    cart();
+
+
+
+
+
+ ///  mycart remove Start 
+    function cartRemove(id){
+        $.ajax({
+            type: 'GET',
+            url: '/user/cart-remove/'+id,
+            dataType:'json',
+            success:function(data){
+
+            cart();
+            miniCart();
+           
+             // Start Message 
+                const Toast = Swal.mixin({
+                      toast: true,
+                      position: 'top-end',
+                      
+                      showConfirmButton: false,
+                      timer: 3000
+                    })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message 
+            }
+        });
+    }
+ // End mycart remove   
+
+</script>
+
+
+{{--  end load mycart data --}}
+
+
+{{--   mycart increment data --}}
+<script type="text/javascript">
+     // -------- CART INCREMENT --------//
+    function cartIncrement(rowId){
+        $.ajax({
+            type:'GET',
+            url: "/cart-increment/"+rowId,
+            dataType:'json',
+            success:function(data){
+                cart();
+                miniCart();
+            }
+        });
+    }
+ // ---------- END  mycart increment -----///
+
+
+
+
+ // -------- CART Decrement  --------//
+    function cartDecrement(rowId){
+        $.ajax({
+            type:'GET',
+            url: "/cart-decrement/"+rowId,
+            dataType:'json',
+            success:function(data){
+                cart();
+                miniCart();
+            }
+        });
+    }
+ // ---------- END CART Decrement -----///
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
 </body>
 </html>

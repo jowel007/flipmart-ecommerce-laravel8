@@ -15,7 +15,10 @@ use App\Http\Controllers\Frontend\CartController;
 
 
 use App\Http\Controllers\User\WishlistController;
+use App\Http\Controllers\User\CartPageController; 
 
+
+use App\Http\Controllers\Backend\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -225,7 +228,32 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
 
 });
 
+    //my cart page all route
+
+    Route::get('/mycart', [CartPageController::class, 'MyCart'])->name('mycart');
+
+    Route::get('/user/get-cart-product', [CartPageController::class, 'GetCartProduct']);
+
+    Route::get('/user/cart-remove/{rowId}', [CartPageController::class, 'RemoveCartProduct']);
+
+    Route::get('/cart-increment/{rowId}', [CartPageController::class, 'CartIncrement']);
+
+    Route::get('/cart-decrement/{rowId}', [CartPageController::class, 'CartDecrement']);
 
 
 
 
+Route::prefix('coupons')->group(function(){
+
+    Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+
+    Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
+
+    Route::get('/edit/{id}', [CouponController::class, 'CouponEdit'])->name('coupon.edit');
+
+    Route::post('/update/{id}', [CouponController::class, 'CouponUpdate'])->name('coupon.update');
+
+    Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
+
+
+});
