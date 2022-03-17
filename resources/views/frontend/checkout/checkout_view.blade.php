@@ -271,7 +271,8 @@ My Checkout
 		</div>
 	</div>
 </div> 
-<!-- checkout-progress-sidebar --> </div>
+<!-- checkout-progress-sidebar --> 
+</div>
 
 
 

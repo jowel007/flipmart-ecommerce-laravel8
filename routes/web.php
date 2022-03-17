@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\StripeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -228,6 +229,9 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
 
     Route::get('/wishlist-remove/{id}', [WishlistController::class, 'RemoveWishlistProduct']);
 
+    Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
+
+
 
 });
 
@@ -325,4 +329,6 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+
 

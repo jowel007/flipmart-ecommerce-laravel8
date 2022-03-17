@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2022 at 06:01 PM
+-- Generation Time: Mar 17, 2022 at 04:37 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -181,7 +181,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2022_03_16_042244_create_ship_divisions_table', 12),
 (19, '2022_03_16_045842_create_ship_districts_table', 13),
 (20, '2022_03_16_052213_create_ship_states_table', 14),
-(21, '2022_03_16_160651_create_shippings_table', 15);
+(21, '2022_03_16_160651_create_shippings_table', 15),
+(22, '2022_03_17_021704_create_orders_table', 16),
+(23, '2022_03_17_021810_create_order_items_table', 16);
 
 -- --------------------------------------------------------
 
@@ -267,6 +269,83 @@ INSERT INTO `multi_imgs` (`id`, `product_id`, `photo_name`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `division_id` bigint(20) UNSIGNED NOT NULL,
+  `district_id` bigint(20) UNSIGNED NOT NULL,
+  `state_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_code` int(11) DEFAULT NULL,
+  `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `amount` double(8,2) NOT NULL,
+  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_year` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `confirmed_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `processing_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `picked_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `shipped_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:54:10', NULL),
+(2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:59:13', NULL),
+(3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 21:27:45', NULL),
+(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 21:29:54', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double(8,2) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+(1, 1, 6, 'Red', 'Small', '1', 450.00, '2022-03-16 20:54:10', NULL),
+(2, 2, 9, 'Red', NULL, '1', 1600.00, '2022-03-16 20:59:13', NULL),
+(3, 4, 9, 'Red', NULL, '1', 1600.00, '2022-03-16 21:29:59', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
@@ -275,6 +354,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('user@gmail.com', '$2y$10$FNdhJropZp9c3OeP3Ih8juwmDqsj.pXOH9hTreJclBFp7js85Bvxe', '2022-03-16 21:13:23');
 
 -- --------------------------------------------------------
 
@@ -371,28 +457,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('kpwdWApb1KY4yUbl9AD8n35zlAKzgWzu9EE0ysBb', 2, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiaXVQUlk1NmtTcFB0WHZxeTRLbUVTb3UwRXNVTU9QRHowWGNkanhDaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jaGVja291dCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NDoiY2FydCI7YToxOntzOjc6ImRlZmF1bHQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoyOntzOjg6IgAqAGl0ZW1zIjthOjE6e3M6MzI6IjYzYWY5YzMxN2IzNzhjM2VlYjBmOTA4ZDc5ZjI2ZDE3IjtPOjMyOiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbSI6MTE6e3M6NToicm93SWQiO3M6MzI6IjYzYWY5YzMxN2IzNzhjM2VlYjBmOTA4ZDc5ZjI2ZDE3IjtzOjI6ImlkIjtzOjI6IjExIjtzOjM6InF0eSI7aToyO3M6NDoibmFtZSI7czo5OToiVklWT0hPTUUgRWxlY3RyaWMgUG9ydGFibGUgMiBpbiAxIFR3aW4gVHViIE1pbmkgTGF1bmRyeSBXYXNoZXIgYW5kIFNwaW4gRHJ5ZXIgQ29tYm8gV2FzaGluZyBNYWNoaW5lIjtzOjU6InByaWNlIjtkOjMwMDA7czo2OiJ3ZWlnaHQiO2Q6MTtzOjc6Im9wdGlvbnMiO086Mzk6Ikdsb3VkZW1hbnNcU2hvcHBpbmdjYXJ0XENhcnRJdGVtT3B0aW9ucyI6Mjp7czo4OiIAKgBpdGVtcyI7YTozOntzOjU6ImltYWdlIjtzOjQ2OiJ1cGxvYWQvcHJvZHVjdHMvdGhhbWJuYWlsLzE3MjY3MTE3NTgzMDQwNDAuanBnIjtzOjQ6InNpemUiO3M6NToiU21hbGwiO3M6NToiY29sb3IiO3M6MzoiUmVkIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6MDtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkc1V2ZTltcHRUSXRRZ0xXLnBPeGZaLlZtLnNscnNkdi5pQmgvNHBSaVA4Uk8xbVUyUnZIZU8iO30=', 1647449981);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `shippings`
---
-
-CREATE TABLE `shippings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `order_id` bigint(20) UNSIGNED NOT NULL,
-  `division_id` bigint(20) UNSIGNED NOT NULL,
-  `district_id` bigint(20) UNSIGNED NOT NULL,
-  `state_id` bigint(20) UNSIGNED NOT NULL,
-  `shipping_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `shipping_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `post_code` int(11) NOT NULL,
-  `notes` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+('5bcBmnRQ4wcLpw4OkAkb8G16AFMXOagDjk64tPJ3', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo4OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJLUlVOa2ZocUpLN0Q2OVZWdDdFdVdWeHhTNjcyQ1ZCekI2ZUgxb0hFIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNnBraUxCRXJEMHNXL3ZLZGk5NGtyZVZLRkhuekhzMjlUVndFdHYuZ3haVVduSGdQQldGVGkiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjQ6ImNhcnQiO2E6MDp7fX0=', 1647488094);
 
 -- --------------------------------------------------------
 
@@ -676,8 +741,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'user', 'jowel@user.com', NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
-(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, '2TT4BvcbG3lsrBwJUSe2CCQKI7AjKSnwlDAjI0GUZ6VtFyPgh0Y2Fny0UMJh', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
-(3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16');
+(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'fddHGGP2FN7iQIICNbkGMMLbBzUYYcZkFnzXKpxiARDwZhW6MVG620R5mAmO', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
+(3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16'),
+(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-16 21:15:39');
 
 -- --------------------------------------------------------
 
@@ -699,9 +765,7 @@ CREATE TABLE `wishlists` (
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
 (5, 2, 11, '2022-03-15 07:10:19', NULL),
-(6, 2, 8, '2022-03-15 07:10:21', NULL),
-(7, 2, 4, '2022-03-15 07:54:58', NULL),
-(8, 2, 6, '2022-03-15 07:55:14', NULL);
+(6, 2, 8, '2022-03-15 07:10:21', NULL);
 
 --
 -- Indexes for dumped tables
@@ -752,6 +816,19 @@ ALTER TABLE `multi_imgs`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_items_order_id_foreign` (`order_id`);
+
+--
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -778,12 +855,6 @@ ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
-
---
--- Indexes for table `shippings`
---
-ALTER TABLE `shippings`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `ship_districts`
@@ -872,13 +943,25 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
 --
 ALTER TABLE `multi_imgs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -891,12 +974,6 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `shippings`
---
-ALTER TABLE `shippings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ship_districts`
@@ -938,13 +1015,23 @@ ALTER TABLE `sub_sub_categories`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
