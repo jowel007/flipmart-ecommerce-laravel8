@@ -61,7 +61,7 @@ class CheckoutController extends Controller
         else
 
         {
-            return 'cash';
+            return view('frontend.payment.cash',compact('data','cartTotal'));
         }
 
     }// end mehtod. 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2022 at 04:37 AM
+-- Generation Time: Mar 18, 2022 at 07:16 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -285,10 +285,10 @@ CREATE TABLE `orders` (
   `notes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `payment_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_method` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `transaction_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `currency` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` double(8,2) NOT NULL,
-  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `invoice_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `order_month` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -314,7 +314,10 @@ INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`,
 (1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:54:10', NULL),
 (2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:59:13', NULL),
 (3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 21:27:45', NULL),
-(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 21:29:54', NULL);
+(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 21:29:54', NULL),
+(5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:21:13', NULL),
+(6, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1209, 'wow', 'card_1KeYSzLX3DmCvNsuSuYQNLih', 'Stripe', 'txn_3KeYT1LX3DmCvNsu18ZKYhoF', 'usd', 1.00, '62341a1197b8b', 'FMS81021352', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:35:16', NULL),
+(7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:56:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -341,7 +344,11 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `color`, `size`, `qty`, `price`, `created_at`, `updated_at`) VALUES
 (1, 1, 6, 'Red', 'Small', '1', 450.00, '2022-03-16 20:54:10', NULL),
 (2, 2, 9, 'Red', NULL, '1', 1600.00, '2022-03-16 20:59:13', NULL),
-(3, 4, 9, 'Red', NULL, '1', 1600.00, '2022-03-16 21:29:59', NULL);
+(3, 4, 9, 'Red', NULL, '1', 1600.00, '2022-03-16 21:29:59', NULL),
+(4, 5, 4, 'Red', 'Small', '1', 300.00, '2022-03-17 23:21:19', NULL),
+(5, 5, 8, 'Red', 'Small', '1', 2200.00, '2022-03-17 23:21:19', NULL),
+(6, 6, 9, 'Red', NULL, '1', 1600.00, '2022-03-17 23:35:20', NULL),
+(7, 7, 10, 'Red', NULL, '1', 1650.00, '2022-03-17 23:56:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -457,7 +464,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5bcBmnRQ4wcLpw4OkAkb8G16AFMXOagDjk64tPJ3', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo4OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJLUlVOa2ZocUpLN0Q2OVZWdDdFdVdWeHhTNjcyQ1ZCekI2ZUgxb0hFIjtzOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkNnBraUxCRXJEMHNXL3ZLZGk5NGtyZVZLRkhuekhzMjlUVndFdHYuZ3haVVduSGdQQldGVGkiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjQ6ImNhcnQiO2E6MDp7fX0=', 1647488094);
+('h2idxAV6QQpL1ZMWFQYXkZYhuwIPo8S55EFLwy9z', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiSWNIVnJCOW9KNEcwQmZQbGhhVmFneXVWMkRyaENqaGF6Z1lHdDYxaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkNnBraUxCRXJEMHNXL3ZLZGk5NGtyZVZLRkhuekhzMjlUVndFdHYuZ3haVVduSGdQQldGVGkiO3M6NDoiY2FydCI7YTowOnt9fQ==', 1647583225);
 
 -- --------------------------------------------------------
 
@@ -955,13 +962,13 @@ ALTER TABLE `multi_imgs`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

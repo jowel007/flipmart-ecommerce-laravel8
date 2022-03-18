@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User; 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
@@ -23,6 +25,8 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\AllUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,10 +63,15 @@ Route::post('/update/change/password',[AdminProfileController::class, 'AdminUpda
 
 }); //admin middleware  end
 
+
+
+
 //user all routes
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $id = Auth::user()->id;
+    $user = User::find($id);
+    return view('dashboard',compact('user'));
 })->name('dashboard');
 
 Route::get('/',[IndexController::class, 'index']);
@@ -71,6 +80,7 @@ Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.
 Route::post('/user/profile/store', [IndexController::class, 'UserProfileStore'])->name('user.profile.store');
 Route::get('/user/change/password', [IndexController::class, 'UserChangePassword'])->name('user.change.password');
 Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
 
 
 //brand all routes
@@ -231,6 +241,12 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
 
     Route::post('/stripe/order', [StripeController::class, 'StripeOrder'])->name('stripe.order');
 
+    Route::post('/cash/order', [CashController::class, 'CashOrder'])->name('cash.order');
+
+    Route::get('/my/orders', [AllUserController::class, 'MyOrders'])->name('my.orders');
+
+    Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
+
 
 
 });
@@ -329,6 +345,8 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+
 
 
 
