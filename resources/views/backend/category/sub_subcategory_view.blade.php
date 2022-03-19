@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Sub->SubCategory List</h3>
+                    <h3 class="box-title">Sub->SubCategory List <span class="badge badge-pill badge-danger"> {{ count($subsubcategory) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -86,12 +86,12 @@
 		<select name="category_id" class="form-control"  >
 			<option value="" selected="" disabled="">Select Category</option>
 			@foreach($categories as $category)
-			<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>	
+			<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
 			@endforeach
 		</select>
-		@error('category_id') 
+		@error('category_id')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	 </div>
 		 </div>
 
@@ -103,9 +103,9 @@
 			<option value="" selected="" disabled="">Select SubCategory</option>
 
 		</select>
-		@error('subcategory_id') 
+		@error('subcategory_id')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	 </div>
 		 </div>
 
@@ -114,9 +114,9 @@
 		<h5>Sub-SubCategory English <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_en" class="form-control" >
-     @error('subsubcategory_name_en') 
+     @error('subsubcategory_name_en')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	  </div>
 	</div>
 
@@ -125,15 +125,15 @@
 		<h5>Sub-SubCategory Hindi  <span class="text-danger">*</span></h5>
 		<div class="controls">
 	 <input type="text" name="subsubcategory_name_hin" class="form-control" >
-     @error('subsubcategory_name_hin') 
+     @error('subsubcategory_name_hin')
 	 <span class="text-danger">{{ $message }}</span>
-	 @enderror 
+	 @enderror
 	  </div>
-	</div> 
+	</div>
 
 
 			 <div class="text-xs-right">
-	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">					 
+	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add New">
 						</div>
 					</form>
 
@@ -145,7 +145,7 @@
 				</div>
 				<!-- /.box-body -->
 			  </div>
-			  <!-- /.box --> 
+			  <!-- /.box -->
 			</div>
 
 
@@ -183,4 +183,4 @@
     </script>
 
 
-@endsection 
+@endsection

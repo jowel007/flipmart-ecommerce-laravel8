@@ -18,7 +18,7 @@
 
 			 <div class="box">
 				<div class="box-header with-border">
-				  <h3 class="box-title">Product List</h3>
+				    <h3 class="box-title">Product List <span class="badge badge-pill badge-danger"> {{ count($products) }} </span></h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
@@ -43,9 +43,9 @@
 		<td>{{ $item->product_name_en }}</td>
 		 <td>{{ $item->selling_price }} $</td>
 		 <td>{{ $item->product_qty }}</td>
-		 
 
-		 <td> 
+
+		 <td>
 		 	@if($item->discount_price == NULL)
 		 	<span class="badge badge-pill badge-danger">No Discount</span>
 
@@ -116,4 +116,4 @@
 
 
 
-@endsection 
+@endsection

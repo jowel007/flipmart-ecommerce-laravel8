@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User; 
+use App\Models\User;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -18,11 +18,12 @@ use App\Http\Controllers\Frontend\CartController;
 
 
 use App\Http\Controllers\User\WishlistController;
-use App\Http\Controllers\User\CartPageController; 
+use App\Http\Controllers\User\CartPageController;
 
 
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\ReportController;
 
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\StripeController;
@@ -143,7 +144,7 @@ Route::prefix('category')->group(function(){
 });
 
 
-// Admin Products All Routes 
+// Admin Products All Routes
 
 Route::prefix('product')->group(function(){
 
@@ -173,7 +174,7 @@ Route::get('/delete/{id}', [ProductController::class, 'ProductDelete'])->name('p
 });
 
 
-// Admin Slider All Routes 
+// Admin Slider All Routes
 
 Route::prefix('slider')->group(function(){
 
@@ -203,8 +204,8 @@ Route::get('/language/english', [LanguageController::class, 'English'])->name('e
 /// product details url All Routes ////
 Route::get('/product/details/{id}/{slug}', [IndexController::class,'ProductDetails']);
 
-// Frontend Product Tags Page 
-Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']); 
+// Frontend Product Tags Page
+Route::get('/product/tag/{tag}', [IndexController::class, 'TagWiseProduct']);
 
 // Frontend SubCategory wise Data
 Route::get('/subcategory/product/{subcat_id}/{slug}', [IndexController::class, 'SubCatWiseProduct']);
@@ -214,19 +215,19 @@ Route::get('/subsubcategory/product/{subsubcat_id}/{slug}', [IndexController::cl
 
 
 // Product View Modal with Ajax
-Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']); 
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']);
 
 // Add to Cart Store Data
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 
 // Get Data from mini cart
-Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']); 
+Route::get('/product/mini/cart/', [CartController::class, 'AddMiniCart']);
 
 // Remove mini cart
 Route::get('/minicart/product-remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 
 // Add to Wishlist
-Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']); 
+Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishlist']);
 
 
 
@@ -249,6 +250,12 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
     Route::get('/order_details/{order_id}', [AllUserController::class, 'OrderDetails']);
 
     Route::get('/invoice_download/{order_id}', [AllUserController::class, 'InvoiceDownload']);
+
+    Route::post('/return/order/{order_id}', [AllUserController::class, 'ReturnOrder'])->name('return.order');
+
+    Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
+
+    Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
 
 
 
@@ -298,7 +305,7 @@ Route::prefix('shipping')->group(function() {
     Route::get('/division/delete/{id}', [ShippingAreaController::class, 'DivisionDelete'])->name('division.delete');
 
 
-    // Ship District 
+    // Ship District
 
     Route::get('/district/view', [ShippingAreaController::class, 'DistrictView'])->name('manage-district');
 
@@ -321,11 +328,11 @@ Route::prefix('shipping')->group(function() {
 
     Route::post('/state/update/{id}', [ShippingAreaController::class, 'StateUpdate'])->name('state.update');
 
-    Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete'); 
+    Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');
 
     Route::get('/state/delete/{id}', [ShippingAreaController::class, 'StateDelete'])->name('state.delete');
 
-    
+
 });
 
 
@@ -340,7 +347,7 @@ Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 
 
- // Checkout Routes 
+ // Checkout Routes
 Route::get('/checkout', [CartController::class, 'CheckoutCreate'])->name('checkout');
 
 Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'DistrictGetAjax']);
@@ -350,7 +357,7 @@ Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGe
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
 
 
-// Admin Order All Routes 
+// Admin Order All Routes
 
 Route::prefix('orders')->group(function(){
 
@@ -370,7 +377,7 @@ Route::get('/delivered/orders', [OrderController::class, 'DeliveredOrders'])->na
 
 Route::get('/cancel/orders', [OrderController::class, 'CancelOrders'])->name('cancel-orders');
 
-// Update Status 
+// Update Status
 Route::get('/pending/confirm/{order_id}', [OrderController::class, 'PendingToConfirm'])->name('pending-confirm');
 
 Route::get('/confirm/processing/{order_id}', [OrderController::class, 'ConfirmToProcessing'])->name('confirm.processing');
@@ -382,6 +389,31 @@ Route::get('/picked/shipped/{order_id}', [OrderController::class, 'PickedToShipp
 Route::get('/shipped/delivered/{order_id}', [OrderController::class, 'ShippedToDelivered'])->name('shipped.delivered');
 
 Route::get('/invoice/download/{order_id}', [OrderController::class, 'AdminInvoiceDownload'])->name('invoice.download');
+
+
+});
+
+
+// Admin Reports Routes
+Route::prefix('reports')->group(function(){
+
+    Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
+
+    Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+
+    Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
+
+    Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+
+
+});
+
+
+// Admin Get All User Routes
+Route::prefix('alluser')->group(function(){
+
+    Route::get('/view', [AdminProfileController::class, 'AllUsers'])->name('all-users');
+
 
 });
 

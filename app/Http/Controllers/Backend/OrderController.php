@@ -14,7 +14,7 @@ use PDF;
 
 class OrderController extends Controller
 {
-    // Pending Orders 
+    // Pending Orders
     public function PendingOrders(){
 
         $orders = Order::where('status','Pending')->orderBy('id','DESC')->get();
@@ -22,7 +22,7 @@ class OrderController extends Controller
 
     }
 
-    // Pending Order Details 
+    // Pending Order Details
     public function PendingOrdersDetails($order_id){
         $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
         $orderItem = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
@@ -30,53 +30,53 @@ class OrderController extends Controller
     }
 
 
-    // Confirmed Orders 
+    // Confirmed Orders
     public function ConfirmedOrders(){
         $orders = Order::where('status','confirm')->orderBy('id','DESC')->get();
         return view('backend.orders.confirmed_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
 
-    // Processing Orders 
+    // Processing Orders
     public function ProcessingOrders(){
         $orders = Order::where('status','processing')->orderBy('id','DESC')->get();
         return view('backend.orders.processing_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
-    // Picked Orders 
+    // Picked Orders
     public function PickedOrders(){
         $orders = Order::where('status','picked')->orderBy('id','DESC')->get();
         return view('backend.orders.picked_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
-    // Shipped Orders 
+    // Shipped Orders
     public function ShippedOrders(){
         $orders = Order::where('status','shipped')->orderBy('id','DESC')->get();
         return view('backend.orders.shipped_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
-    // Delivered Orders 
+    // Delivered Orders
     public function DeliveredOrders(){
         $orders = Order::where('status','delivered')->orderBy('id','DESC')->get();
         return view('backend.orders.delivered_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
-    // Cancel Orders 
+    // Cancel Orders
     public function CancelOrders(){
         $orders = Order::where('status','cancel')->orderBy('id','DESC')->get();
         return view('backend.orders.cancel_orders',compact('orders'));
 
-    } // end mehtod 
+    } // end mehtod
 
 
 
@@ -173,6 +173,8 @@ class OrderController extends Controller
         return $pdf->download('invoice.pdf');
 
     } // end method
+
+
 
 
 

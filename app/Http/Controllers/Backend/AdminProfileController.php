@@ -8,6 +8,8 @@ use App\Models\Admin;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 
+use App\Models\User;
+
 class AdminProfileController extends Controller
 {
     public function AdminProfile(){
@@ -15,7 +17,7 @@ class AdminProfileController extends Controller
         return view('admin.admin_profile_view',compact('adminData'));
     }
 
-    //edit 
+    //edit
 
     public function AdminProfileEdit(){
         $editData = Admin::find(1);
@@ -74,6 +76,13 @@ class AdminProfileController extends Controller
         }
     }
 
+
+    public function AllUsers(){
+
+        $users = User::latest()->get();
+		return view('backend.user.all_user',compact('users'));
+
+    }
 
 
 }

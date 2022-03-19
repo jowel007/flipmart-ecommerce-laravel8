@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 01:24 PM
+-- Generation Time: Mar 19, 2022 at 07:01 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -45,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2022-01-27 12:21:12', '$2y$10$xz1LI6SYO9okqYzta6jz5OYCMt7kD2amgeWF1AtcRP76DTJOo6Ysq', 'Cfl6OGBL8eb3gdaczv1kO23goQ18jpRfPzSK40owq2vuw8YYntNb9wHMjtQ3', NULL, '202201290322pexels-alex-nasto-582635.jpg', '2022-01-27 12:21:12', '2022-01-28 21:22:39');
+(1, 'Admin', 'admin@gmail.com', '2022-01-27 12:21:12', '$2y$10$xz1LI6SYO9okqYzta6jz5OYCMt7kD2amgeWF1AtcRP76DTJOo6Ysq', 'djECDIxz3ukwzU9OWKLjHZpKuN3wnO783M0rvxCgI0yxVRoE6jME4Xgm9Sa5', NULL, '202201290322pexels-alex-nasto-582635.jpg', '2022-01-27 12:21:12', '2022-01-28 21:22:39');
 
 -- --------------------------------------------------------
 
@@ -314,7 +314,7 @@ INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`,
 (1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'confirm', '2022-03-16 20:54:10', '2022-03-19 06:14:26'),
 (2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:59:13', NULL),
 (3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'picked', '2022-03-16 21:27:45', '2022-03-19 06:15:15'),
-(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'delivered', '2022-03-16 21:29:54', '2022-03-19 06:16:00'),
+(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '19 March 2022', 'wrong product', 'delivered', '2022-03-16 21:29:54', '2022-03-19 10:24:15'),
 (5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2022-03-17 23:21:13', NULL),
 (6, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1209, 'wow', 'card_1KeYSzLX3DmCvNsuSuYQNLih', 'Stripe', 'txn_3KeYT1LX3DmCvNsu18ZKYhoF', 'usd', 1.00, '62341a1197b8b', 'FMS81021352', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:35:16', NULL),
 (7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:56:46', NULL);
@@ -464,7 +464,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('3qXxhG6R96a7QPm3reC4K33MN1aov4VHWv65umHX', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiU251eWJhWUNqYVFhSDhEM1VWMjFNTlBsMU5wb0w0NHducVFnbEhwTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9vcmRlcnMvaW52b2ljZS9kb3dubG9hZC8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1647692561);
+('5UB5ijvbekaQMm3i6pDAYppY5C5dAsbfx1sb7HQo', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo2OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9icmFuZHMvdmlldyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJ4aWJMZ1ZDVFlhcDlRWlpMb1pOZzNqUjd3Z25CQ3FmOFNvTzNGYnNFIjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHNVdmU5bXB0VEl0UWdMVy5wT3hmWi5WbS5zbHJzZHYuaUJoLzRwUmlQOFJPMW1VMlJ2SGVPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7fQ==', 1647712739);
 
 -- --------------------------------------------------------
 
@@ -731,6 +731,7 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_seen` int(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -746,11 +747,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'user', 'jowel@user.com', NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
-(2, 'user', 'user@gmail.com', '01847313527', NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'fddHGGP2FN7iQIICNbkGMMLbBzUYYcZkFnzXKpxiARDwZhW6MVG620R5mAmO', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
-(3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16'),
-(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-16 21:15:39');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'user', 'jowel@user.com', NULL, NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
+(2, 'user', 'user@gmail.com', '01847313527', NULL, NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'DAVQ5S49jVAx1g5VDYdWDc7XVw6xvx5q0g1ACyih4KIToCb54uBbhuwKXWKx', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
+(3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16'),
+(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', NULL, NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-16 21:15:39');
 
 -- --------------------------------------------------------
 
