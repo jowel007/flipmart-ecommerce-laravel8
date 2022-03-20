@@ -62,6 +62,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+
     // User Active Show
     public function UserOnline(){
 

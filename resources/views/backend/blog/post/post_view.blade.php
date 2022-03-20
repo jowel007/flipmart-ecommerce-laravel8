@@ -94,9 +94,11 @@
 			<h5>Post Main Image  <span class="text-danger">*</span></h5>
 			<div class="controls">
 	 <input type="file" name="post_image" class="form-control" onChange="mainThamUrl(this)" required="" >
+
      @error('post_image')
 	 <span class="text-danger">{{ $message }}</span>
 	 @enderror
+	 
 	 <img src="" id="mainThmb">
 	 		 </div>
 		</div>

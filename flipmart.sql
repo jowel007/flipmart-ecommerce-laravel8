@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 10:05 AM
+-- Generation Time: Mar 20, 2022 at 07:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -362,6 +362,7 @@ CREATE TABLE `orders` (
   `delivered_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cancel_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `return_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
   `return_reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -372,14 +373,14 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'confirm', '2022-03-16 20:54:10', '2022-03-19 06:14:26'),
-(2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-16 20:59:13', NULL),
-(3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'picked', '2022-03-16 21:27:45', '2022-03-19 06:15:15'),
-(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '19 March 2022', 'wrong product', 'delivered', '2022-03-16 21:29:54', '2022-03-19 10:24:15'),
-(5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2022-03-17 23:21:13', NULL),
-(6, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1209, 'wow', 'card_1KeYSzLX3DmCvNsuSuYQNLih', 'Stripe', 'txn_3KeYT1LX3DmCvNsu18ZKYhoF', 'usd', 1.00, '62341a1197b8b', 'FMS81021352', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:35:16', NULL),
-(7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2022-03-17 23:56:46', '2022-03-20 01:07:35');
+INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'confirm', '2022-03-16 20:54:10', '2022-03-19 06:14:26'),
+(2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'pending', '2022-03-16 20:59:13', NULL),
+(3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'picked', '2022-03-16 21:27:45', '2022-03-19 06:15:15'),
+(4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '20 March 2022', '1', 'Broken Product', 'delivered', '2022-03-16 21:29:54', '2022-03-20 11:18:34'),
+(5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2022-03-17 23:21:13', NULL),
+(6, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1209, 'wow', 'card_1KeYSzLX3DmCvNsuSuYQNLih', 'Stripe', 'txn_3KeYT1LX3DmCvNsu18ZKYhoF', 'usd', 1.00, '62341a1197b8b', 'FMS81021352', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '20 March 2022', '2', 'wrong product ordered', 'delivered', '2022-03-17 23:35:16', '2022-03-20 12:07:57'),
+(7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2022-03-17 23:56:46', '2022-03-20 01:07:35');
 
 -- --------------------------------------------------------
 
@@ -550,7 +551,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('30TvXIeFh1jRaPMj2Gy7EadhYpqejGMNXwPhkTWq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiSUhET0ttQ0pwSjNGa3RwaXhHMnZXZjFGS2F5cXNFV3RXSGw5WEhNTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXR0aW5nL3NlbyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7czo4OiJsYW5ndWFnZSI7czo3OiJlbmdsaXNoIjtzOjQ6ImNhcnQiO2E6MTp7czo3OiJkZWZhdWx0IjtPOjI5OiJJbGx1bWluYXRlXFN1cHBvcnRcQ29sbGVjdGlvbiI6Mjp7czo4OiIAKgBpdGVtcyI7YToxOntzOjMyOiJhNzAyMWVlMGUwYWI1ZGRmMmYzZDBlMzYyYzA4MzZiZCI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjExOntzOjU6InJvd0lkIjtzOjMyOiJhNzAyMWVlMGUwYWI1ZGRmMmYzZDBlMzYyYzA4MzZiZCI7czoyOiJpZCI7czoyOiIxMCI7czozOiJxdHkiO3M6MToiMSI7czo0OiJuYW1lIjtzOjU5OiJMaXZpbmcgYW5kIE1vcmUgNCBGb290IEhlaWdodCBBZGp1c3RhYmxlIEZvbGQtaW4tSGFsZiBUYWJsZSI7czo1OiJwcmljZSI7ZDoxNjUwO3M6Njoid2VpZ2h0IjtkOjE7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6Mzp7czo1OiJpbWFnZSI7czo0NjoidXBsb2FkL3Byb2R1Y3RzL3RoYW1ibmFpbC8xNzI2NzExNjEwMTA3NDM5LmpwZyI7czo0OiJzaXplIjtOO3M6NToiY29sb3IiO3M6MzoiUmVkIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6MDtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO319fQ==', 1647767053);
+('XUmcCSiP8OPCcvkRo4N1yD2RWFHRvNv3sxvYylPZ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTnowWEsxcVU2cjNab1YwMkhTN0sxNTFPbEZzMXhuYkpFcXdyN2swYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXR1cm4vYWRtaW4vYWxsL3JlcXVlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7fQ==', 1647799928);
 
 -- --------------------------------------------------------
 
@@ -846,7 +847,7 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_seen` int(255) DEFAULT NULL,
+  `last_seen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -866,7 +867,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (1, 'user', 'jowel@user.com', NULL, NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
 (2, 'user', 'user@gmail.com', '01847313527', NULL, NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'DAVQ5S49jVAx1g5VDYdWDc7XVw6xvx5q0g1ACyih4KIToCb54uBbhuwKXWKx', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
 (3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16'),
-(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', NULL, NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-16 21:15:39');
+(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', '2022-03-20 18:11:59', NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-20 12:11:59');
 
 -- --------------------------------------------------------
 

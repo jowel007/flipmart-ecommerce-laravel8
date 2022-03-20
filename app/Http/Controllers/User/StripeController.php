@@ -29,10 +29,10 @@ class StripeController extends Controller
         }
 
 
-        
+
         \Stripe\Stripe::setApiKey('sk_test_51Ke8DyLX3DmCvNsu0mgetZ5BYkldHY5JJfx5fg2SFlq8ZqJthZKIkC6u3ExX061eHoMDiBLXSmE3vVlA6swr015z00m15WMQj0');
 
-      
+
         $token = $_POST['stripeToken'];
         $charge = \Stripe\Charge::create([
           'amount' => $total_amount*100,
@@ -68,13 +68,13 @@ class StripeController extends Controller
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
-            'status' => 'Pending',
-            'created_at' => Carbon::now(),   
+            'status' => 'pending',
+            'created_at' => Carbon::now(),
 
              ]);
 
 
-        // Start Send Email 
+        // Start Send Email
 
              $invoice = Order::findOrFail($order_id);
                 $data = [
@@ -86,14 +86,14 @@ class StripeController extends Controller
 
                 Mail::to($request->email)->send(new OrderMail($data));
 
-        // End Send Email 
+        // End Send Email
 
 
 
          $carts = Cart::content();
             foreach ($carts as $cart) {
             OrderItem::insert([
-                'order_id' => $order_id, 
+                'order_id' => $order_id,
                 'product_id' => $cart->id,
                 'color' => $cart->options->color,
                 'size' => $cart->options->size,
@@ -125,7 +125,7 @@ class StripeController extends Controller
 
 
     }
-    
+
 
 
 }
