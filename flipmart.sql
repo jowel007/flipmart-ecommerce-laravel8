@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2022 at 07:01 PM
+-- Generation Time: Mar 20, 2022 at 05:43 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -46,6 +46,64 @@ CREATE TABLE `admins` (
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'admin@gmail.com', '2022-01-27 12:21:12', '$2y$10$xz1LI6SYO9okqYzta6jz5OYCMt7kD2amgeWF1AtcRP76DTJOo6Ysq', 'djECDIxz3ukwzU9OWKLjHZpKuN3wnO783M0rvxCgI0yxVRoE6jME4Xgm9Sa5', NULL, '202201290322pexels-alex-nasto-582635.jpg', '2022-01-27 12:21:12', '2022-01-28 21:22:39');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_posts`
+--
+
+CREATE TABLE `blog_posts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `post_title_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_title_hin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_slug_hin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_details_en` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `post_details_hin` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_posts`
+--
+
+INSERT INTO `blog_posts` (`id`, `category_id`, `post_title_en`, `post_title_hin`, `post_slug_en`, `post_slug_hin`, `post_image`, `post_details_en`, `post_details_hin`, `created_at`, `updated_at`) VALUES
+(1, 2, 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur', 'निमो एनिम इप्सम वोलुप्टेटम किआ वोलुप्टस सिट एस्परनाटुर', 'nemo-enim-ipsam-voluptatem-quia-voluptas-sit-aspernatur', 'निमो-एनिम-इप्सम-वोलुप्टेटम-किआ-वोलुप्टस-सिट-एस्परनाटुर', 'upload/post/1727787874061875.jpg', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\r\n\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>', '<pre>\r\nलोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट।\r\n\r\nड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट।</pre>', '2022-03-20 04:14:24', NULL),
+(2, 1, 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur', 'निमो एनिम इप्सम वोलुप्टेटम किआ वोलुप्टस सिट एस्परनाटुर', 'nemo-enim-ipsam-voluptatem-quia-voluptas-sit-aspernatur', 'निमो-एनिम-इप्सम-वोलुप्टेटम-किआ-वोलुप्टस-सिट-एस्परनाटुर', 'upload/post/1727787983585761.jpg', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>\r\n\r\n<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>', '<pre>\r\nलोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट।\r\n\r\nड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट। ड्यूस ऑट इर्योर डोलर इन रिप्रेहेंडरिट इन वॉलुप्टेट वेलिट एसएसई सिलम डोलोरे ईयू फुगियाट नाला परियातुर। एक्सेप्युर सिंट ओसीकैट कपिडैटैट नॉन प्रोडेंट, सन्ट इन कल्पा क्वी ऑफिसिया डिसेरुंट मोलिट एनिम आईडी इस्ट लेबरम। लोरेम इप्सम डोलर सिट एमेट, कॉन्सेक्टेटूर एडिपिसिंग एलीट, सेड डू ईयूसमॉड टेम्पर इनसिडिडंट यूट लेबर एट डोलोरे मैग्ना एलिका। यूट एनिम एड मिनिम वेनिअम, क्विस नोस्ट्रुड एक्सर्सिटेशन उलमको लेबरिस निसि यूट एलिक्विप एक्स ईए कमोडो कॉन्सेक्वेट।</pre>', '2022-03-20 04:14:19', NULL),
+(3, 4, 'How to Craft a Successful Customer-Centric Marketing Strategy', 'एक सफल ग्राहक-केंद्रित मार्केटिंग रणनीति कैसे तैयार करें', 'how-to-craft-a-successful-customer-centric-marketing-strategy', 'एक-सफल-ग्राहक-केंद्रित-मार्केटिंग-रणनीति-कैसे-तैयार-करें', 'upload/post/1727788178661316.jpg', '<p>My online search for the right gift led me to&nbsp;<a href=\"https://www.stlocarina.com/\" rel=\"noopener\" target=\"_blank\">STL Ocarina</a>, a company that sells ocarinas &mdash; the musical wind instruments that have been around for thousands of years and a staple item in the Legend of Zelda series. Clearly, the company knew many of its customers were like me &mdash; either fans of the games or shopping for fans of the games &mdash; so it made finding Zelda-themed ocarinas on its website simple.</p>\r\n\r\n<p>Just hover over the tab that says &quot;Our Ocarinas,&quot; and the first category to pop up under the tab says &quot;For Legend of Zelda Fans.&quot; From there, I was taken to a page displaying their Zelda-themed ocarinas and the option to include a songbook of the game&rsquo;s music.</p>\r\n\r\n<p>After purchasing the ocarina and songbook, I remembered my friend doesn&rsquo;t know how to play the ocarina and the songbook may not have tips for beginners. Luckily, STL Ocarina&rsquo;s confirmation email included a YouTube instructional video and links to online resources that will help him get started.</p>', '<pre>\r\nसही उपहार के लिए मेरी ऑनलाइन खोज ने मुझे एसटीएल ओकेरिना तक पहुँचाया, जो एक कंपनी है जो ओकारिनस बेचती है - संगीतमय पवन वाद्ययंत्र जो हजारों वर्षों से हैं और लीजेंड ऑफ ज़ेल्डा श्रृंखला में एक प्रमुख वस्तु है। स्पष्ट रूप से, कंपनी को पता था कि उसके कई ग्राहक मेरे जैसे थे - या तो खेल के प्रशंसक या खेल के प्रशंसकों के लिए खरीदारी - इसलिए इसने अपनी वेबसाइट पर ज़ेल्डा-थीम वाले ओकारिनस को सरल बना दिया।\r\n\r\nबस उस टैब पर होवर करें जो &quot;हमारा ओकारिनास&quot; कहता है और टैब के नीचे पॉप अप करने वाली पहली श्रेणी &quot;फॉर लीजेंड ऑफ ज़ेल्डा फैन्स&quot; कहती है। वहां से, मुझे उनके ज़ेल्डा-थीम वाले ओकारिनस प्रदर्शित करने वाले एक पृष्ठ पर ले जाया गया और खेल के संगीत की एक गीतपुस्तिका को शामिल करने का विकल्प दिया गया।\r\n\r\nओकारिना और गीतपुस्तिका खरीदने के बाद, मुझे याद आया कि मेरे मित्र को ओकारिना बजाना नहीं आता है और गीतपुस्तिका में शुरुआती लोगों के लिए सुझाव नहीं हो सकते हैं। सौभाग्य से, STL Ocarina के पुष्टिकरण ईमेल में एक YouTube निर्देशात्मक वीडियो और ऑनलाइन संसाधनों के लिंक शामिल थे जो उसे आरंभ करने में मदद करेंगे।</pre>', '2022-03-20 04:14:08', NULL),
+(4, 5, '24 Stats That Prove Why You Need a Crisis Management Strategy in 2022', '24 आँकड़े जो साबित करते हैं कि आपको 2022 में संकट प्रबंधन रणनीति की आवश्यकता क्यों है', '24-stats-that-prove-why-you-need-a-crisis-management-strategy-in-2022', '24-आँकड़े-जो-साबित-करते-हैं-कि-आपको-2022-में-संकट-प्रबंधन-रणनीति-की-आवश्यकता-क्यों-है', 'upload/post/1727788325927686.jpg', '<ul>\r\n	<li>69% of business leaders reported experiencing a crisis over a period of five years, with the average number of crises being three. (<a href=\"https://www.pwc.com/gx/en/forensics/global-crisis-survey/pdf/pwc-global-crisis-survey-2019.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">PWC</a>)</li>\r\n	<li>A crisis-agnostic management strategy is the hallmark of a resilient organization, but only 35% of survey respondents have a crisis response plan that is crisis-agnostic. (<a href=\"https://www.pwc.com/gx/en/forensics/global-crisis-survey/pdf/pwc-global-crisis-survey-2019.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">PWC</a>)</li>\r\n	<li>In 2019, 95% of PWC survey respondents said they expected a crisis to hit within the next two years, but only 30% of respondents to the 2021 survey said they had a crisis management team in place when the COVID-19 pandemic hit. (<a href=\"https://www.pwc.com/gx/en/forensics/global-crisis-survey/pdf/pwc-global-crisis-survey-2019.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">PWC</a>)</li>\r\n	<li>Only 49% of respondents to a Deloitte survey say their companies have playbooks for likely crisis scenarios. (<a href=\"https://www2.deloitte.com/content/dam/Deloitte/us/Documents/risk/us-aers-global-cm-survey-report.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">Deloitte</a>)</li>\r\n	<li>30% of board members that experienced past crises said their reputations recovered in less than a year. 16% said it took four years or more. (<a href=\"https://www2.deloitte.com/content/dam/Deloitte/us/Documents/risk/us-aers-global-cm-survey-report.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">Deloitte</a>)</li>\r\n	<li>49% of respondents engage with management to understand their efforts in crisis preparedness, but only half say that board members and management have specific conversations about crisis prevention. (<a href=\"https://www2.deloitte.com/content/dam/Deloitte/us/Documents/risk/us-aers-global-cm-survey-report.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">Deloitte</a>)</li>\r\n	<li>Only 32% of respondents say part of their crisis response planning is before-the-fact crisis simulation or wargaming, which is scenario role play. (<a href=\"https://www2.deloitte.com/content/dam/Deloitte/us/Documents/risk/us-aers-global-cm-survey-report.pdf?hubs_post-cta=blognavcard-service\" rel=\"noopener\" target=\"_blank\">Deloitte</a>)</li>\r\n</ul>', '<pre>\r\n69% व्यापारिक नेताओं ने पांच वर्षों की अवधि में संकट का अनुभव करने की सूचना दी, जिसमें संकटों की औसत संख्या तीन थी। (पीडब्ल्यूसी)\r\nएक संकट-अज्ञेय प्रबंधन रणनीति एक लचीला संगठन की पहचान है, लेकिन सर्वेक्षण के उत्तरदाताओं में से केवल 35% के पास संकट प्रतिक्रिया योजना है जो संकट-अज्ञेयवादी है। (पीडब्ल्यूसी)\r\n2019 में, पीडब्ल्यूसी सर्वेक्षण के 95% उत्तरदाताओं ने कहा कि उन्हें अगले दो वर्षों के भीतर एक संकट की आशंका है, लेकिन 2021 के सर्वेक्षण में केवल 30% उत्तरदाताओं ने कहा कि उनके पास एक संकट प्रबंधन टीम थी जब COVID-19 महामारी हिट हुई थी। (पीडब्ल्यूसी)\r\nडेलॉइट सर्वेक्षण में केवल 49% उत्तरदाताओं का कहना है कि उनकी कंपनियों के पास संभावित संकट परिदृश्यों के लिए प्लेबुक हैं। (डेलॉयट)\r\nपिछले संकटों का अनुभव करने वाले बोर्ड के 30% सदस्यों ने कहा कि उनकी प्रतिष्ठा एक वर्ष से भी कम समय में बरामद हुई है। 16% ने कहा कि इसमें चार साल या उससे अधिक समय लगा। (डेलॉयट)\r\n49% उत्तरदाताओं ने संकट की तैयारी में उनके प्रयासों को समझने के लिए प्रबंधन के साथ संलग्न किया, लेकिन केवल आधे का कहना है कि बोर्ड के सदस्यों और प्रबंधन ने संकट की रोकथाम के बारे में विशिष्ट बातचीत की है। (डेलॉयट)\r\nकेवल 32% उत्तरदाताओं का कहना है कि उनकी संकट प्रतिक्रिया योजना का हिस्सा वास्तविक संकट सिमुलेशन या युद्धबाजी है, जो कि परिदृश्य की भूमिका है। (डेलॉयट)</pre>', '2022-03-20 04:14:03', NULL),
+(5, 3, '11 Excellent WordPress CRM Plugins to Consider This Year', 'इस वर्ष विचार करने के लिए 11 उत्कृष्ट वर्डप्रेस सीआरएम प्लगइन्स', '11-excellent-wordpress-crm-plugins-to-consider-this-year', 'इस-वर्ष-विचार-करने-के-लिए-11-उत्कृष्ट-वर्डप्रेस-सीआरएम-प्लगइन्स', 'upload/post/1727788426703069.webp', '<p>For your online businesses to succeed, you need to establish strong relationships with your customers. If your visitors struggle finding details about your business, or if they need to re-explain their challenges to multiple members of your team, they won&rsquo;t wait around for long.</p>\r\n\r\n<p>The best way to establish better relationships is with&nbsp;<a href=\"https://blog.hubspot.com/sales/benefits-of-crm?hubs_post-cta=blognavcard-website\" rel=\"noopener\" target=\"_blank\">great CRM software</a>. With the right CRM, your business will be armed with relevant consumer data that can help you identify key market opportunities and discover ways to enhance the customer experience. And, to connect one with WordPress, you just need a plugin.</p>\r\n\r\n<p>CRM&nbsp;<a href=\"https://blog.hubspot.com/website/WordPress-plugins?hubs_post-cta=blognavcard-website\" rel=\"noopener\" target=\"_blank\">WordPress plugins</a>&nbsp;for your WordPress website help streamline your critical customer-facing interactions in a way that ties them to your business&rsquo;s backend processes. In turn, your team will be empowered to better manage website interactions, support customers, track historical transactions, and reliably connect with prospects.</p>\r\n\r\n<p>But which plugin is the right fit for your business? In this guide, we&rsquo;ll take a look at some of the best plugin options, dive into what they offer, and see how they stand out from the crowd.</p>', '<pre>\r\nअपने ऑनलाइन व्यवसायों को सफल बनाने के लिए, आपको अपने ग्राहकों के साथ मजबूत संबंध स्थापित करने की आवश्यकता है। यदि आपके विज़िटर को आपके व्यवसाय के बारे में विवरण प्राप्त करने में कठिनाई होती है, या यदि उन्हें आपकी टीम के कई सदस्यों को अपनी चुनौतियों को फिर से समझाने की आवश्यकता है, तो वे लंबे समय तक प्रतीक्षा नहीं करेंगे।\r\n\r\nबेहतर सीआरएम सॉफ्टवेयर के साथ बेहतर संबंध स्थापित करने का सबसे अच्छा तरीका है। सही सीआरएम के साथ, आपका व्यवसाय प्रासंगिक उपभोक्ता डेटा से लैस होगा जो आपको बाजार के प्रमुख अवसरों की पहचान करने और ग्राहक अनुभव को बढ़ाने के तरीकों की खोज करने में मदद कर सकता है। और, किसी को वर्डप्रेस से जोड़ने के लिए, आपको बस एक प्लगइन की आवश्यकता है।\r\n\r\nआपकी वर्डप्रेस वेबसाइट के लिए सीआरएम वर्डप्रेस प्लगइन्स आपके महत्वपूर्ण ग्राहक-सामना करने वाले इंटरैक्शन को इस तरह से व्यवस्थित करने में मदद करते हैं जो उन्हें आपके व्यवसाय की बैकएंड प्रक्रियाओं से जोड़ता है। बदले में, आपकी टीम को वेबसाइट इंटरैक्शन को बेहतर ढंग से प्रबंधित करने, ग्राहकों का समर्थन करने, ऐतिहासिक लेनदेन को ट्रैक करने और संभावनाओं के साथ मज़बूती से जुड़ने का अधिकार होगा।\r\n\r\nलेकिन कौन सा प्लगइन आपके व्यवसाय के लिए उपयुक्त है? इस गाइड में, हम कुछ बेहतरीन प्लगइन विकल्पों पर एक नज़र डालेंगे, जो वे पेश करते हैं उसमें गोता लगाएँ, और देखें कि वे भीड़ से कैसे अलग हैं।</pre>', '2022-03-20 04:13:52', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_post_categories`
+--
+
+CREATE TABLE `blog_post_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `blog_category_name_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_name_hin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_slug_en` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `blog_category_slug_hin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `blog_post_categories`
+--
+
+INSERT INTO `blog_post_categories` (`id`, `blog_category_name_en`, `blog_category_name_hin`, `blog_category_slug_en`, `blog_category_slug_hin`, `created_at`, `updated_at`) VALUES
+(1, 'Tech', 'तकनीक', 'tech', 'तकनीक', '2022-03-19 20:56:45', '2022-03-19 20:56:45'),
+(2, 'Wealth', 'संपदा', 'wealth', 'संपदा', '2022-03-19 20:57:05', '2022-03-19 20:57:05'),
+(3, 'Technology', 'प्रौद्योगिकी', 'technology', 'प्रौद्योगिकी', '2022-03-19 20:56:56', '2022-03-19 20:56:56'),
+(4, 'Marketing', 'विपणन', 'marketing', 'विपणन', '2022-03-19 20:56:29', '2022-03-19 20:56:29'),
+(5, 'Service', 'सेवा', 'service', 'सेवा', '2022-03-19 21:34:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -183,7 +241,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2022_03_16_052213_create_ship_states_table', 14),
 (21, '2022_03_16_160651_create_shippings_table', 15),
 (22, '2022_03_17_021704_create_orders_table', 16),
-(23, '2022_03_17_021810_create_order_items_table', 16);
+(23, '2022_03_17_021810_create_order_items_table', 16),
+(24, '2022_03_20_023738_create_blog_post_categories_table', 17),
+(25, '2022_03_20_030600_create_blog_posts_table', 18);
 
 -- --------------------------------------------------------
 
@@ -464,7 +524,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('5UB5ijvbekaQMm3i6pDAYppY5C5dAsbfx1sb7HQo', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo2OntzOjM6InVybCI7YTowOnt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9icmFuZHMvdmlldyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NjoiX3Rva2VuIjtzOjQwOiJ4aWJMZ1ZDVFlhcDlRWlpMb1pOZzNqUjd3Z25CQ3FmOFNvTzNGYnNFIjtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJHNVdmU5bXB0VEl0UWdMVy5wT3hmWi5WbS5zbHJzZHYuaUJoLzRwUmlQOFJPMW1VMlJ2SGVPIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRzVXZlOW1wdFRJdFFnTFcucE94ZlouVm0uc2xyc2R2LmlCaC80cFJpUDhSTzFtVTJSdkhlTyI7fQ==', 1647712739);
+('mlWIcdhN5m53JuNpD5cit2fbaVjI747MFcux1iui', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiV2pFQUdYekJ1NXNKNE8wRWNNaXFVTElhSlZzNlJMdkNnNTJ2WWUybyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1647742900),
+('RliGLe0Vm6Ej8C5nsk7uNi6Yo5jv5M9PfdONQBit', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTmFIVUFsUnpMYzY1NWxWQ1VXTlB2N3NPS3Q1bmVqMTZzOW5OTXpsUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1647751334);
 
 -- --------------------------------------------------------
 
@@ -787,6 +848,18 @@ ALTER TABLE `admins`
   ADD UNIQUE KEY `admins_email_unique` (`email`);
 
 --
+-- Indexes for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_post_categories`
+--
+ALTER TABLE `blog_post_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `brands`
 --
 ALTER TABLE `brands`
@@ -924,6 +997,18 @@ ALTER TABLE `admins`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `blog_posts`
+--
+ALTER TABLE `blog_posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `blog_post_categories`
+--
+ALTER TABLE `blog_post_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
@@ -951,7 +1036,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`

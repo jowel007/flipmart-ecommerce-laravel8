@@ -11,12 +11,14 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Slider;
 use App\Models\Product;
-use App\Models\MultiImg;  
+use App\Models\MultiImg;
+use App\Models\BlogPost;
 
 class IndexController extends Controller
 {
     public function index()
     {
+        $blogpost = BlogPost::latest()->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->limit(8)->get();
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
@@ -37,19 +39,23 @@ class IndexController extends Controller
         $skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
 
 
-        return view ('frontend.index',compact('categories','sliders','products','featured','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1'));
+        return view ('frontend.index',compact('categories','sliders','products','featured','hot_deals','special_offer','special_deals','skip_category_0','skip_product_0','skip_category_1','skip_product_1','skip_brand_1','skip_brand_product_1','blogpost'));
     }
+
+
 
     public function UserLogout(){
         Auth::logout();
         return redirect()->route('login');
     }
 
+
     public function UserProfile(){
         $id = Auth::user()->id;
         $user = User::find($id);
         return view('frontend.profile.user_profile',compact('user'));
     }
+
 
      //profile store
 
@@ -62,7 +68,7 @@ class IndexController extends Controller
         if($request->file('profile_photo_path')){
             $file = $request->file('profile_photo_path');
             @unlink(public_path('upload/user_images/' . $data->profile_photo_path));
-            $filename = date('YmdHi').$file->getClientOriginalName();            
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('upload/user_images'), $filename);
             $data['profile_photo_path'] = $filename;
         }
@@ -86,7 +92,7 @@ class IndexController extends Controller
     }
 
     public function UserPasswordUpdate(Request $request){
-        
+
         $validateData = $request->validate([
             'oldpassword' => 'required',
             'password'  => 'required|confirmed',
@@ -181,7 +187,7 @@ class IndexController extends Controller
 
         ));
 
-    } // end method 
+    } // end method
 
 
 }
