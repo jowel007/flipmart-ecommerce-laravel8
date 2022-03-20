@@ -26,13 +26,13 @@
 				<div class="sidebar-module-container">
 				<div class="home-banner outer-top-n">
 <img src="{{asset('frontend')}}/assets/images/banners/LHS-banner.jpg" alt="Image">
-</div>		
+</div>
 
 
 
     	<!-- ================= HOT DEALS ======================= -->
 			@include('frontend.common.hot_deals');
-<!-- ===================== HOT DEALS: END ================ -->					
+<!-- ===================== HOT DEALS: END ================ -->
 
 <!-- ============================================== NEWSLETTER ============================================== -->
 <div class="sidebar-widget newsletter wow fadeInUp outer-bottom-small outer-top-vs">
@@ -62,7 +62,7 @@
          <div class="item">
          	<div class="avatar"><img src="{{asset('frontend')}}/assets/images/testimonials/member3.png" alt="Image"></div>
 		<div class="testimonials"><em>"</em>Vtae sodales aliq uam morbi non sem lacus port mollis. Nunc condime tum metus eud molest sed consectetuer.<em>"</em></div>
-		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>    
+		<div class="clients_author">Stephen Doe	<span>Xperia Designs</span>	</div>
         </div><!-- /.item -->
 
         <div class="item">
@@ -123,15 +123,15 @@
         </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
-</div><!-- /.gallery-holder -->        			
+</div><!-- /.gallery-holder -->
 					<div class='col-sm-6 col-md-7 product-info-block'>
 						<div class="product-info">
 							<h1 class="name" id="pname">
 
-								@if(session()->get('language') == 'hindi') 
+								@if(session()->get('language') == 'hindi')
 									{{ $product->product_name_hin }}
-								@else 
-								 	{{ $product->product_name_en }} 
+								@else
+								 	{{ $product->product_name_en }}
 								@endif
 
 							</h1>
@@ -146,7 +146,7 @@
 											<a href="#" class="lnk">(13 Reviews)</a>
 										</div>
 									</div>
-								</div><!-- /.row -->		
+								</div><!-- /.row -->
 							</div><!-- /.rating-reviews -->
 
 							<div class="stock-container info-container m-t-10">
@@ -154,14 +154,14 @@
 									<div class="col-sm-2">
 										<div class="stock-box">
 											<span class="label">Availability :</span>
-										</div>	
+										</div>
 									</div>
 									<div class="col-sm-9">
 										<div class="stock-box">
 											<span class="value">In Stock</span>
-										</div>	
+										</div>
 									</div>
-								</div><!-- /.row -->	
+								</div><!-- /.row -->
 							</div><!-- /.stock-container -->
 
 							<div class="description-container m-t-20">
@@ -184,7 +184,7 @@
 										</div>
 									</div>
 
-									
+
 
 									<div class="col-sm-6">
 										<div class="favorite-button m-t-10">
@@ -245,18 +245,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 							<div class="quantity-container info-container">
 								<div class="row">
 
@@ -287,7 +275,8 @@
 							</div><!-- /.quantity-container -->
 
 
-
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <div class="addthis_inline_share_toolbox_8tvu"></div>
 
 
 
@@ -311,106 +300,106 @@
 
 								<div id="description" class="tab-pane in active">
 									<div class="product-tab">
-										<p class="text">@if(session()->get('language') == 'hindi') 
+										<p class="text">@if(session()->get('language') == 'hindi')
 			{!! $product->long_descp_hin !!} @else {!! $product->long_descp_en !!} @endif</p>
-									</div>	
+									</div>
 								</div><!-- /.tab-pane -->
 
 								<div id="review" class="tab-pane">
 									<div class="product-tab">
 
-										<div class="product-reviews">
-											<h4 class="title">Customer Reviews</h4>
+        <div class="product-reviews">
+            <h4 class="title">Customer Reviews</h4>
 
-											<div class="reviews">
-												<div class="review">
-													<div class="review-title"><span class="summary">We love this product</span><span class="date"><i class="fa fa-calendar"></i><span>1 days ago</span></span></div>
-													<div class="text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit."</div>
-																										</div>
 
-											</div><!-- /.reviews -->
-										</div><!-- /.product-reviews -->
+@php
+$reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
+@endphp
+
+            <div class="reviews">
+
+            @foreach($reviews as $item)
+
+                @if($item->status == 0)
+
+                @else
+                <div class="review">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                        <img style="border-radius: 50%" src="{{ (!empty($item->user->profile_photo_path))? url('upload/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}" width="40px;" height="40px;"><b> {{ $item->user->name }}</b>
+                        </div>
+
+                        <div class="col-md-9">
+
+                        </div>
+                    </div> <!-- // end row -->
+
+
+                    <div class="review-title"><span class="summary">{{ $item->summary }}</span><span class="date"><i class="fa fa-calendar"></i><span>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span></span></div>
+                    <div class="text">"{{ $item->comment }}"</div>
+                </div>
+
+                @endif
+
+            @endforeach
+            </div><!-- /.reviews -->
+
+        </div><!-- /.product-reviews -->
 
 
 
 										<div class="product-add-review">
 											<h4 class="title">Write your own review</h4>
 											<div class="review-table">
-												<div class="table-responsive">
-													<table class="table">	
-														<thead>
-															<tr>
-																<th class="cell-label">&nbsp;</th>
-																<th>1 star</th>
-																<th>2 stars</th>
-																<th>3 stars</th>
-																<th>4 stars</th>
-																<th>5 stars</th>
-															</tr>
-														</thead>	
-														<tbody>
-															<tr>
-																<td class="cell-label">Quality</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Price</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-															<tr>
-																<td class="cell-label">Value</td>
-																<td><input type="radio" name="quality" class="radio" value="1"></td>
-																<td><input type="radio" name="quality" class="radio" value="2"></td>
-																<td><input type="radio" name="quality" class="radio" value="3"></td>
-																<td><input type="radio" name="quality" class="radio" value="4"></td>
-																<td><input type="radio" name="quality" class="radio" value="5"></td>
-															</tr>
-														</tbody>
-													</table><!-- /.table .table-bordered -->
-												</div><!-- /.table-responsive -->
+
+
 											</div><!-- /.review-table -->
 
 											<div class="review-form">
+
+                                                @guest
+                                <p> <b> For Add Product Review. You Need to Login First <a href="{{ route('login') }}">Login Here</a> </b> </p>
+                                                @else
+
 												<div class="form-container">
-													<form role="form" class="cnt-form">
+                                    <form role="form" class="cnt-form"  method="post" action="{{ route('review.store') }}">
 
-														<div class="row">
-															<div class="col-sm-6">
-																<div class="form-group">
-																	<label for="exampleInputName">Your Name <span class="astk">*</span></label>
-																	<input type="text" class="form-control txt" id="exampleInputName" placeholder="">
-																</div><!-- /.form-group -->
-																<div class="form-group">
-																	<label for="exampleInputSummary">Summary <span class="astk">*</span></label>
-																	<input type="text" class="form-control txt" id="exampleInputSummary" placeholder="">
-																</div><!-- /.form-group -->
-															</div>
+                                        @csrf
 
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="exampleInputReview">Review <span class="astk">*</span></label>
-																	<textarea class="form-control txt txt-review" id="exampleInputReview" rows="4" placeholder=""></textarea>
-																</div><!-- /.form-group -->
-															</div>
-														</div><!-- /.row -->
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-														<div class="action text-right">
-															<button class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
-														</div><!-- /.action -->
+                                        <div class="row">
+                                            <div class="col-sm-6">
 
-													</form><!-- /.cnt-form -->
+                                                <div class="form-group">
+                                                    <label for="exampleInputSummary">Summary <span class="astk">*</span></label>
+                                                    <input type="text" name="summary" class="form-control txt" id="exampleInputSummary" placeholder="">
+                                                </div><!-- /.form-group -->
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="exampleInputReview">Review <span class="astk">*</span></label>
+                                                    <textarea class="form-control txt txt-review" name="comment" id="exampleInputReview" rows="4" placeholder=""></textarea>
+                                                </div><!-- /.form-group -->
+                                            </div>
+                                        </div><!-- /.row -->
+
+                                        <div class="action text-right">
+                                            <button type="submit" class="btn btn-primary btn-upper">SUBMIT REVIEW</button>
+                                        </div><!-- /.action -->
+
+                                    </form><!-- /.cnt-form -->
+
 												</div><!-- /.form-container -->
+
+                                            @endguest
+
+
 											</div><!-- /.review-form -->
 
-										</div><!-- /.product-add-review -->										
+										</div><!-- /.product-add-review -->
 
 							        </div><!-- /.product-tab -->
 								</div><!-- /.tab-pane -->
@@ -465,11 +454,11 @@
                   <div class="product-image">
                     <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
                     <!-- /.image -->
-                    
+
       @php
         $amount = $product->selling_price - $product->discount_price;
         $discount = ($amount/$product->selling_price) * 100;
-      @endphp                  
+      @endphp
 
         <div>
             @if ($product->discount_price == NULL)
@@ -478,11 +467,11 @@
             <div class="tag hot"><span>{{ round($discount) }}%</span></div>
             @endif
         </div>
-                    
+
 
                   </div>
                   <!-- /.product-image -->
-                  
+
                   <div class="product-info text-left">
                     <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
                       @if(session()->get('language') == 'hindi') {{ $product->product_name_hin }} @else {{ $product->product_name_en }} @endif
@@ -496,8 +485,8 @@
       <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
   @endif
 
-                    <!-- /.product-price --> 
-                    
+                    <!-- /.product-price -->
+
                   </div>
                   <!-- /.product-info -->
                   <div class="cart clearfix animate-effect">
@@ -511,21 +500,21 @@
                         <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal" aria-hidden="true"></i> </a> </li>
                       </ul>
                     </div>
-                    <!-- /.action --> 
+                    <!-- /.action -->
                   </div>
-                  <!-- /.cart --> 
+                  <!-- /.cart -->
                 </div>
-                <!-- /.product --> 
-                
+                <!-- /.product -->
+
               </div>
-              <!-- /.products --> 
+              <!-- /.products -->
             </div>
 
 @endforeach
 
-		
 
-		
+
+
 
 			</div><!-- /.home-owl-carousel -->
 </section><!-- /.section -->
@@ -543,7 +532,8 @@
 
 
 
-
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4b85f98de5201f"></script>
 
 
 
