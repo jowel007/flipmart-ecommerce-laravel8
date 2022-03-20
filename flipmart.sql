@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 05:43 AM
+-- Generation Time: Mar 20, 2022 at 10:05 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -243,7 +243,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (22, '2022_03_17_021704_create_orders_table', 16),
 (23, '2022_03_17_021810_create_order_items_table', 16),
 (24, '2022_03_20_023738_create_blog_post_categories_table', 17),
-(25, '2022_03_20_030600_create_blog_posts_table', 18);
+(25, '2022_03_20_030600_create_blog_posts_table', 18),
+(26, '2022_03_20_071316_create_site_settings_table', 19),
+(27, '2022_03_20_084424_create_seos_table', 20);
 
 -- --------------------------------------------------------
 
@@ -377,7 +379,7 @@ INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`,
 (4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '19 March 2022', 'wrong product', 'delivered', '2022-03-16 21:29:54', '2022-03-19 10:24:15'),
 (5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2022-03-17 23:21:13', NULL),
 (6, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1209, 'wow', 'card_1KeYSzLX3DmCvNsuSuYQNLih', 'Stripe', 'txn_3KeYT1LX3DmCvNsu18ZKYhoF', 'usd', 1.00, '62341a1197b8b', 'FMS81021352', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:35:16', NULL),
-(7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', '2022-03-17 23:56:46', NULL);
+(7, 4, 2, 1, 7, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1245, 'ggjhgc', 'Cash On Delivery', 'Cash On Delivery', NULL, 'Usd', 1.00, NULL, 'EOS25309005', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'processing', '2022-03-17 23:56:46', '2022-03-20 01:07:35');
 
 -- --------------------------------------------------------
 
@@ -507,6 +509,30 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `subs
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `seos`
+--
+
+CREATE TABLE `seos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_author` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `google_analytics` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `seos`
+--
+
+INSERT INTO `seos` (`id`, `meta_title`, `meta_author`, `meta_keyword`, `meta_description`, `google_analytics`, `created_at`, `updated_at`) VALUES
+(1, 'Flipmart online shop', 'Flipmart shop', 'best online shop, best ecommerce , best ecommerce product', 'Learn Programing skills, from absolute beginner to advanced mastery.We try to create project base course which help your to learn professionally and make you fell as a complete developer', 'window.dataLayer = window.dataLayer || [];\r\n  function gtag(){dataLayer.push(arguments);}\r\n  gtag(\'js\', new Date());\r\n\r\n  gtag(\'config\', \'UA-84816806-1\');', NULL, '2022-03-20 03:02:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -524,8 +550,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('mlWIcdhN5m53JuNpD5cit2fbaVjI747MFcux1iui', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiV2pFQUdYekJ1NXNKNE8wRWNNaXFVTElhSlZzNlJMdkNnNTJ2WWUybyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1647742900),
-('RliGLe0Vm6Ej8C5nsk7uNi6Yo5jv5M9PfdONQBit', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTmFIVUFsUnpMYzY1NWxWQ1VXTlB2N3NPS3Q1bmVqMTZzOW5OTXpsUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1647751334);
+('30TvXIeFh1jRaPMj2Gy7EadhYpqejGMNXwPhkTWq', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo4OntzOjY6Il90b2tlbiI7czo0MDoiSUhET0ttQ0pwSjNGa3RwaXhHMnZXZjFGS2F5cXNFV3RXSGw5WEhNTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zZXR0aW5nL3NlbyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTI6ImxvZ2luX2FkbWluXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7czo4OiJsYW5ndWFnZSI7czo3OiJlbmdsaXNoIjtzOjQ6ImNhcnQiO2E6MTp7czo3OiJkZWZhdWx0IjtPOjI5OiJJbGx1bWluYXRlXFN1cHBvcnRcQ29sbGVjdGlvbiI6Mjp7czo4OiIAKgBpdGVtcyI7YToxOntzOjMyOiJhNzAyMWVlMGUwYWI1ZGRmMmYzZDBlMzYyYzA4MzZiZCI7TzozMjoiR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0iOjExOntzOjU6InJvd0lkIjtzOjMyOiJhNzAyMWVlMGUwYWI1ZGRmMmYzZDBlMzYyYzA4MzZiZCI7czoyOiJpZCI7czoyOiIxMCI7czozOiJxdHkiO3M6MToiMSI7czo0OiJuYW1lIjtzOjU5OiJMaXZpbmcgYW5kIE1vcmUgNCBGb290IEhlaWdodCBBZGp1c3RhYmxlIEZvbGQtaW4tSGFsZiBUYWJsZSI7czo1OiJwcmljZSI7ZDoxNjUwO3M6Njoid2VpZ2h0IjtkOjE7czo3OiJvcHRpb25zIjtPOjM5OiJHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbU9wdGlvbnMiOjI6e3M6ODoiACoAaXRlbXMiO2E6Mzp7czo1OiJpbWFnZSI7czo0NjoidXBsb2FkL3Byb2R1Y3RzL3RoYW1ibmFpbC8xNzI2NzExNjEwMTA3NDM5LmpwZyI7czo0OiJzaXplIjtOO3M6NToiY29sb3IiO3M6MzoiUmVkIjt9czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO31zOjc6InRheFJhdGUiO2k6MDtzOjQ5OiIAR2xvdWRlbWFuc1xTaG9wcGluZ2NhcnRcQ2FydEl0ZW0AYXNzb2NpYXRlZE1vZGVsIjtOO3M6NDY6IgBHbG91ZGVtYW5zXFNob3BwaW5nY2FydFxDYXJ0SXRlbQBkaXNjb3VudFJhdGUiO2k6MDtzOjg6Imluc3RhbmNlIjtzOjc6ImRlZmF1bHQiO319czoyODoiACoAZXNjYXBlV2hlbkNhc3RpbmdUb1N0cmluZyI7YjowO319fQ==', 1647767053);
 
 -- --------------------------------------------------------
 
@@ -601,6 +626,35 @@ INSERT INTO `ship_states` (`id`, `division_id`, `district_id`, `state_name`, `cr
 (4, 2, 5, 'hajigang', '2022-03-15 23:32:59', NULL),
 (5, 4, 3, 'chatok', '2022-03-15 23:39:33', '2022-03-15 23:39:33'),
 (7, 2, 1, 'mohirpal', '2022-03-16 10:39:51', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_one` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_two` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `logo`, `phone_one`, `phone_two`, `email`, `company_name`, `company_address`, `facebook`, `twitter`, `linkedin`, `youtube`, `created_at`, `updated_at`) VALUES
+(1, 'upload/logo/1727807250378405.png', '01875628575', '01875628576', 'abuhanifjowel@gmail.com', 'flipmart', 'uttara', 'www.facebook.com/jowel', 'www.twitter.com/rana', 'www.linkedin.com/jowelrana', 'www.youtube.com', NULL, '2022-03-20 02:36:39');
 
 -- --------------------------------------------------------
 
@@ -930,6 +984,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `seos`
+--
+ALTER TABLE `seos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -953,6 +1013,12 @@ ALTER TABLE `ship_divisions`
 -- Indexes for table `ship_states`
 --
 ALTER TABLE `ship_states`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1036,7 +1102,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -1069,6 +1135,12 @@ ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `seos`
+--
+ALTER TABLE `seos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `ship_districts`
 --
 ALTER TABLE `ship_districts`
@@ -1085,6 +1157,12 @@ ALTER TABLE `ship_divisions`
 --
 ALTER TABLE `ship_states`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`
