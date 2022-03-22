@@ -65,38 +65,38 @@ $product_id =Product::insertGetId([
         'product_thambnail' => $save_url,
         'status' => 1,
         'created_at' => Carbon::now(),
-        'created_at' => Carbon::now(),   
+        'created_at' => Carbon::now(),
 
 
       ]);
 
     ////////// Multiple Image Upload Start ///////////
-    
+
           $images = $request->file('multi_img');
           foreach ($images as $img) {
               $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
             Image::make($img)->resize(917,1000)->save('upload/products/multi-image/'.$make_name);
             $uploadPath = 'upload/products/multi-image/'.$make_name;
-    
-       
+
+
 
             MultiImg::insert([
-    
+
                 'product_id' => $product_id,
                 'photo_name' => $uploadPath,
-                'created_at' => Carbon::now(), 
-    
+                'created_at' => Carbon::now(),
+
             ]);
-    
+
           }
-    
+
           ////////// Een Multiple Image Upload Start ///////////
 
            $notification = array(
                 'message' => 'Product Inserted Successfully',
                 'alert-type' => 'success'
             );
-    
+
             return redirect()->route('manage-product')->with($notification);
 
 
@@ -162,9 +162,9 @@ $product_id =Product::insertGetId([
         'hot_deals' => $request->hot_deals,
         'featured' => $request->featured,
         'special_offer' => $request->special_offer,
-        'special_deals' => $request->special_deals,          
+        'special_deals' => $request->special_deals,
         'status' => 1,
-        'created_at' => Carbon::now(),   
+        'created_at' => Carbon::now(),
 
       ]);
 
@@ -176,7 +176,7 @@ $product_id =Product::insertGetId([
         return redirect()->route('manage-product')->with($notification);
 
 
-    } // end method 
+    } // end method
 
 
 
@@ -207,10 +207,10 @@ $product_id =Product::insertGetId([
 
         return redirect()->back()->with($notification);
 
-    } // end mehtod 
+    } // end mehtod
 
 
-/// Product Main Thambnail Update /// 
+/// Product Main Thambnail Update ///
 
     public function ThambnailImageUpdate(Request $request){
         $pro_id = $request->id;
@@ -252,7 +252,7 @@ $product_id =Product::insertGetId([
 
         return redirect()->back()->with($notification);
 
-     } // end method 
+     } // end method
 
 
     public function ProductInactive($id){
@@ -279,7 +279,7 @@ $product_id =Product::insertGetId([
 
 
      //delete product
-     
+
     public function ProductDelete($id){
         $product = Product::findOrFail($id);
         unlink($product->product_thambnail);
@@ -298,7 +298,16 @@ $product_id =Product::insertGetId([
 
         return redirect()->back()->with($notification);
 
-     }// end method 
+     }// end method
+
+
+
+        // product Stock
+    public function ProductStock(){
+
+        $products = Product::latest()->get();
+        return view('backend.product.product_stock',compact('products'));
+    }
 
 
 

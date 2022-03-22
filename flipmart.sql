@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 07:13 PM
+-- Generation Time: Mar 22, 2022 at 06:38 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -245,7 +245,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2022_03_20_023738_create_blog_post_categories_table', 17),
 (25, '2022_03_20_030600_create_blog_posts_table', 18),
 (26, '2022_03_20_071316_create_site_settings_table', 19),
-(27, '2022_03_20_084424_create_seos_table', 20);
+(27, '2022_03_20_084424_create_seos_table', 20),
+(28, '2022_03_20_192108_create_reviews_table', 21);
 
 -- --------------------------------------------------------
 
@@ -375,7 +376,7 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `division_id`, `district_id`, `state_id`, `name`, `email`, `phone`, `post_code`, `notes`, `payment_type`, `payment_method`, `transaction_id`, `currency`, `amount`, `order_number`, `invoice_no`, `order_date`, `order_month`, `order_year`, `confirmed_date`, `processing_date`, `picked_date`, `shipped_date`, `delivered_date`, `cancel_date`, `return_date`, `return_order`, `return_reason`, `status`, `created_at`, `updated_at`) VALUES
 (1, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1307, 'buy it', 'card_1Ke9T1LX3DmCvNsurJPurZGx', 'Stripe', 'txn_3Ke9TaLX3DmCvNsu0btPcDBt', 'usd', 450.00, '6232a2cf8aea8', 'FMS19505744', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'confirm', '2022-03-16 20:54:10', '2022-03-19 06:14:26'),
-(2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'pending', '2022-03-16 20:59:13', NULL),
+(2, 2, 2, 1, 7, 'user', 'user@gmail.com', '01847313527', 1510, 'just buy it', 'card_1Ke9YSLX3DmCvNsuQEo3wkTK', 'Stripe', 'txn_3Ke9YULX3DmCvNsu0T9pt8zT', 'usd', 0.60, '6232a3ff5227d', 'FMS23470140', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'delivered', '2022-03-16 20:59:13', '2022-03-21 23:35:47'),
 (3, 4, 2, 5, 4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 2207, 'just buy it', 'card_1KeA02LX3DmCvNsue7xmlqxR', 'Stripe', 'txn_3KeA04LX3DmCvNsu0lQqtCVZ', 'usd', 1.00, '6232aaaf0e696', 'FMS30594940', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'picked', '2022-03-16 21:27:45', '2022-03-19 06:15:15'),
 (4, 4, 1, 7, 2, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01875628575', 1208, 'kndknskmb', 'card_1KeA26LX3DmCvNsueWIRxEcc', 'Stripe', 'txn_3KeA28LX3DmCvNsu1C7K5LoW', 'usd', 1.00, '6232ab2fe600b', 'FMS71852322', '17 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, '20 March 2022', '1', 'Broken Product', 'delivered', '2022-03-16 21:29:54', '2022-03-20 11:18:34'),
 (5, 4, 1, 6, 1, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', 1008, 'just buy it', 'card_1KeYFKLX3DmCvNsuyx5DzTj7', 'Stripe', 'txn_3KeYFOLX3DmCvNsu13Wta2BA', 'usd', 2.00, '623416c386ff3', 'FMS63723688', '18 March 2022', 'March', '2022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL, 'processing', '2022-03-17 23:21:13', NULL),
@@ -503,9 +504,36 @@ INSERT INTO `products` (`id`, `brand_id`, `category_id`, `subcategory_id`, `subs
 (6, 3, 7, 9, 10, 'OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant', 'आउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत', 'outson-mens-fashion-joggers-sports-pants-casual-cotton-cargo-pants-gym-sweatpants-trousers-mens-long-pant', 'आउटसन-मेन्स-फैशन-जॉगर्स-स्पोर्ट्स-पैंट्स-कैजुअल-कॉटन-कार्गो-पैंट्स-जिम-स्वेटपैंट्स-ट्राउजर-मेन्स-लॉन्ग-पंत', 'HV-MS814', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '520', '450', 'OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant', 'आउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत', '<p>OUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long PantOUTSON Mens Fashion Joggers Sports Pants Casual Cotton Cargo Pants Gym Sweatpants Trousers Mens Long Pant</p>', '<pre>\r\nआउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंतआउटसन मेन्स फैशन जॉगर्स स्पोर्ट्स पैंट्स कैजुअल कॉटन कार्गो पैंट्स जिम स्वेटपैंट्स ट्राउजर मेन्स लॉन्ग पंत</pre>', 'upload/products/thambnail/1726702991251392.jpg', NULL, 1, 1, 1, 1, '2022-03-08 23:43:17', '2022-03-08 23:43:17'),
 (7, 2, 8, 14, 56, 'LG mobile display', 'महिलाओं के लिए कॉम्फिट कैटिन सैंडल', 'lg-mobile-display', 'महिलाओं-के-लिए-कॉम्फिट-कैटिन-सैंडल', 'w55', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '40', NULL, 'Care Instructions: Clean your shoes with the leather cleaner or leather shampoo, and use a good quality brush to remove loose surface dirt.', 'देखभाल के निर्देश: अपने जूतों को लेदर क्लीनर या लेदर शैम्पू से साफ करें, और ढीली सतह की गंदगी को हटाने के लिए एक अच्छी गुणवत्ता वाले ब्रश का उपयोग करें।', '<p><strong>Care Instructions: Clean your shoes with the leather cleaner or leather shampoo, and use a good quality brush to remove loose surface dirt.</strong></p>', '<p>&nbsp;</p>\r\n\r\n<p>देखभाल के निर्देश: अपने जूतों को लेदर क्लीनर या लेदर शैम्पू से साफ करें, और ढीली सतह की गंदगी को हटाने के लिए एक अच्छी गुणवत्ता वाले ब्रश का उपयोग करें।</p>', 'upload/products/thambnail/1726703165626313.jpg', 1, NULL, 1, 1, 1, '2022-03-07 22:07:41', NULL),
 (8, 5, 8, 16, 40, 'SAMSUNG 32” M7 Smart Monitor', 'पुरुषों के लिए हश पिल्ले ओवल स्लिप-ऑन शू', 'samsung-32”-m7-smart-monitor', 'पुरुषों-के-लिए-हश-पिल्ले-ओवल-स्लिप-ऑन-शू', 'LS32AM702UNXZA', '4', 'Mens Fashion,Sports Pants', 'मेन्स फैशन, जॉगर्स', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '2200', NULL, 'Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone', 'मोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें', '<p>Mobile Connectivity: Wireless DeX unlocks a full PC experience, without a computer; Use mobile productivity apps, such as video conferencing, documents and browsers, through just your smart monitor and phone</p>', '<pre>\r\nमोबाइल कनेक्टिविटी: वायरलेस डीएक्स कंप्यूटर के बिना एक पूर्ण पीसी अनुभव को अनलॉक करता है; केवल अपने स्मार्ट मॉनिटर और फोन के माध्यम से मोबाइल उत्पादकता ऐप्स, जैसे वीडियो कॉन्फ्रेंसिंग, दस्तावेज़ और ब्राउज़र का उपयोग करें</pre>', 'upload/products/thambnail/1726711325964391.jpg', NULL, 1, 1, 1, 1, '2022-03-14 23:21:59', '2022-03-14 23:21:59'),
-(9, 4, 8, 15, 46, 'Logitech MK270 Wireless Keyboard', 'विंडोज के लिए लॉजिटेक एमके270 वायरलेस कीबोर्ड', 'logitech-mk270-wireless-keyboard', 'विंडोज-के-लिए-लॉजिटेक-एमके270-वायरलेस-कीबोर्ड', 'MK270', '2', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', NULL, NULL, 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1600', NULL, 'Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer', 'विश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।', '<p>Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer</p>', '<pre>\r\nविश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।</pre>', 'upload/products/thambnail/1726711476459264.jpg', 1, 1, 1, NULL, 1, '2022-03-14 23:20:17', '2022-03-14 23:20:17'),
+(9, 4, 8, 15, 46, 'Logitech MK270 Wireless Keyboard', 'विंडोज के लिए लॉजिटेक एमके270 वायरलेस कीबोर्ड', 'logitech-mk270-wireless-keyboard', 'विंडोज-के-लिए-लॉजिटेक-एमके270-वायरलेस-कीबोर्ड', 'MK270', '1', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', NULL, NULL, 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1600', NULL, 'Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer', 'विश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।', '<p>Reliable Plug and Play: The USB receiver provides a reliable wireless connection up to 33 ft (1), so you can forget about drop-outs and delays and you can take it wherever you use your computer</p>', '<pre>\r\nविश्वसनीय प्लग एंड प्ले: यूएसबी रिसीवर 33 फीट (1) तक एक विश्वसनीय वायरलेस कनेक्शन प्रदान करता है, जिससे आप ड्रॉप-आउट और देरी के बारे में भूल सकते हैं और आप इसे अपने कंप्यूटर का उपयोग करते हुए कहीं भी ले जा सकते हैं।</pre>', 'upload/products/thambnail/1726711476459264.jpg', 1, 1, 1, NULL, 1, '2022-03-14 23:20:17', '2022-03-21 23:35:47'),
 (10, 3, 9, 19, 93, 'Living and More 4 Foot Height Adjustable Fold-in-Half Table', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ', 'living-and-more-4-foot-height-adjustable-fold-in-half-table', 'लिविंग-एंड-मोर-4-फुट-हाइट-एडजस्टेबल-फोल्ड-इन-हाफ', '7712314', '5', 'Living ,Height', 'लिविंग ,हाइट', NULL, NULL, 'Red,Black,White,Blue', 'Red,Black,White,Blue', '1800', '1650', 'Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White', 'लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट', '<p>Living and More 4 Foot Height Adjustable Fold-in-Half Table with Carrying Handle, Easy Folding and Storage, Indoor Outdoor Use, White</p>', '<p>&nbsp;</p>\r\n\r\n<p>लिविंग एंड मोर 4 फुट हाइट एडजस्टेबल फोल्ड-इन-हाफ टेबल कैरीइंग हैंडल के साथ, आसान फोल्डिंग और स्टोरेज, इंडोर आउटडोर यूज, व्हाइट</p>', 'upload/products/thambnail/1726711610107439.jpg', 1, 1, NULL, 1, 1, '2022-03-14 23:58:14', '2022-03-14 23:58:14'),
 (11, 2, 10, 21, 77, 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर', 'vivohome-electric-portable-2-in-1-twin-tub-mini-laundry-washer-and-spin-dryer-combo-washing-machine', 'VIVOHOME-इलेक्ट्रिक-पोर्टेबल-2-इन-1-ट्विन-टब-मिनी-लॉन्ड्री-वॉशर', 'LxWxH', '8', 'Lorem,Ipsum,Amet', 'Lorem,Ipsum,Amet', 'Small,Medium,Large', 'Lorem,Ipsum,Amet', 'Red,Black,White,Blue', 'Red,Black,White,Blue', '3200', '3000', 'VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) & Spinner(8lbs)', 'VIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)', '<p>VIVOHOME Electric Portable 2 in 1 Twin Tub Mini Laundry Washer and Spin Dryer Combo Washing Machine with Built-in Drain Pump and Drain Hose and for Apartments 26lbs Blue Washer(18lbs) &amp; Spinner(8lbs)</p>', '<pre>\r\nVIVOHOME इलेक्ट्रिक पोर्टेबल 2 इन 1 ट्विन टब मिनी लॉन्ड्री वॉशर और स्पिन ड्रायर कॉम्बो वॉशिंग मशीन के साथ बिल्ट-इन ड्रेन पंप और ड्रेन होज़ और अपार्टमेंट्स के लिए 26lbs ब्लू वॉशर (18lbs) और स्पिनर (8lbs)</pre>', 'upload/products/thambnail/1726711758304040.jpg', NULL, 1, NULL, 1, 1, '2022-03-14 23:21:38', '2022-03-14 23:21:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `comment` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `summary` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `product_id`, `user_id`, `comment`, `summary`, `status`, `created_at`, `updated_at`) VALUES
+(1, 9, 4, 'really its nice product', 'nice product', '0', '2022-03-20 13:35:08', NULL),
+(2, 9, 4, '\"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aliquam suscipit.\"', 'best Wireless Keyboard', '1', '2022-03-20 13:36:10', '2022-03-20 13:56:27'),
+(3, 8, 4, 'best monitor ever i saw and it totally perfect pexel and sereen', 'SAMSUNG Smart Monitor', '1', '2022-03-20 13:37:36', '2022-03-20 13:57:59'),
+(4, 8, 4, 'Mobile Connectivity: Wireless DeX unlocks a full PC experience', 'test', '1', '2022-03-20 13:46:59', '2022-03-20 13:57:42');
 
 -- --------------------------------------------------------
 
@@ -551,7 +579,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('XUmcCSiP8OPCcvkRo4N1yD2RWFHRvNv3sxvYylPZ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTnowWEsxcVU2cjNab1YwMkhTN0sxNTFPbEZzMXhuYkpFcXdyN2swYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZXR1cm4vYWRtaW4vYWxsL3JlcXVlc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUyOiJsb2dpbl9hZG1pbl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJDZwa2lMQkVyRDBzVy92S2RpOTRrcmVWS0ZIbnpIczI5VFZ3RXR2Lmd4WlVXbkhnUEJXRlRpIjtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCQ2cGtpTEJFckQwc1cvdktkaTk0a3JlVktGSG56SHMyOVRWd0V0di5neFpVV25IZ1BCV0ZUaSI7fQ==', 1647799928);
+('kOng4D7OWw3NmG6lGrVekAsDKOLcnAMlJbBEomgK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiYlg2MXdpUkN5MmkwY0x0VVB1SjZnWkhxRnNJaTNQcHpKaDVlUGtSQSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zdG9jay9wcm9kdWN0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MjoibG9naW5fYWRtaW5fNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1647927374);
 
 -- --------------------------------------------------------
 
@@ -867,7 +895,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `last_seen`, `email_verifie
 (1, 'user', 'jowel@user.com', NULL, NULL, NULL, '$2y$10$zl3nISZHXsgcAC446Y5/.uE6IsZkIZjZmpyFrsr4HzdMcS8xwFcZO', NULL, NULL, NULL, NULL, 'profile-photos/Ho3GBF2wbaNz0Xuu48Z3vnRwayYQmpQ0oa41Ws8f.jpg', '2022-01-27 11:26:30', '2022-01-27 11:50:01'),
 (2, 'user', 'user@gmail.com', '01847313527', NULL, NULL, '$2y$10$sUve9mptTItQgLW.pOxfZ.Vm.slrsdv.iBh/4pRiP8RO1mU2RvHeO', NULL, NULL, 'DAVQ5S49jVAx1g5VDYdWDc7XVw6xvx5q0g1ACyih4KIToCb54uBbhuwKXWKx', NULL, NULL, '2022-01-28 23:40:14', '2022-01-29 00:19:42'),
 (3, 'jowel', 'jowel@gmail.com', '01875628575', NULL, NULL, '$2y$10$QhIzuyxdhabs83vmEVFwsOIfsnVfGYXOmJnr.MeM0kt96SwsqKF1a', NULL, NULL, NULL, NULL, '202201291347pexels-alex-nasto-582635.jpg', '2022-01-29 07:39:03', '2022-01-29 08:06:16'),
-(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', '2022-03-20 18:11:59', NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-20 12:11:59');
+(4, 'Abu Hanif Jowel', 'abuhanifjowel@gmail.com', '01847313526', '2022-03-20 20:10:59', NULL, '$2y$10$6pkiLBErD0sW/vKdi94kreVKFHnzHs29TVwEtv.gxZUWnHgPBWFTi', NULL, NULL, NULL, NULL, '202203170315118989972_776631056436302_3905353583471886740_n.jpg', '2022-03-16 21:02:23', '2022-03-20 14:10:59');
 
 -- --------------------------------------------------------
 
@@ -983,6 +1011,14 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `reviews_product_id_foreign` (`product_id`),
+  ADD KEY `reviews_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `seos`
@@ -1103,7 +1139,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `multi_imgs`
@@ -1134,6 +1170,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `seos`
@@ -1204,6 +1246,13 @@ ALTER TABLE `wishlists`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `reviews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

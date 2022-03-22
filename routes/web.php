@@ -499,6 +499,15 @@ Route::prefix('review')->group(function(){
 });
 
 
+Route::prefix('stock')->group(function(){
+
+    Route::get('/product', [ProductController::class, 'ProductStock'])->name('product.stock');
+
+});
+
+
+
+
 
 
 
