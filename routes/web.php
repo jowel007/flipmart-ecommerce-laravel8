@@ -238,7 +238,7 @@ Route::post('/add-to-wishlist/{product_id}', [CartController::class, 'AddToWishl
 
 
 
-
+/////////////////////  User Must Login  ////
 Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'User'],function(){
 
     // Wishlist page
@@ -263,6 +263,10 @@ Route::group(['prefix'=>'user','middleware' => ['user','auth'],'namespace'=>'Use
     Route::get('/return/order/list', [AllUserController::class, 'ReturnOrderList'])->name('return.order.list');
 
     Route::get('/cancel/orders', [AllUserController::class, 'CancelOrders'])->name('cancel.orders');
+
+
+    /// Order Traking Route
+    Route::post('/order/tracking', [AllUserController::class, 'OrderTraking'])->name('order.tracking');
 
 
 

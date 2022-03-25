@@ -50,7 +50,7 @@
     $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
 @endphp
 
-        @if($brand == true)
+    @if($brand == true)
         <li class="treeview  {{ ($prefix == '/brand')?'active':'' }}">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -60,12 +60,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
-
+            <li class="{{ ($route == 'all.brand') ? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
           </ul>
         </li>
-        @else
-        @endif
+    @else
+    @endif
 
         @if($category == true)
         <li class="treeview {{ ($prefix == '/category')?'active':'' }}">
